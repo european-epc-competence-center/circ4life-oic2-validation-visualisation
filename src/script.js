@@ -43,9 +43,42 @@ var leftChart = new Chart(myChart, {
               'rgba(30, 144, 255, 0.6)',
           ],
           pointRadius: 5
+      },
+      {
+          type: 'line',
+          data: [{
+              x: 0,
+              y: 5
+          }, {
+              x: 0,
+              y: -5
+          }],
+          fill: false,
+          borderColor: 'black',
+          borderWidth: 1,
+          pointRadius: 0
+      },
+      {
+          type: 'line',
+          data: [{
+              x: -5,
+              y: 0
+          }, {
+              x: 5,
+              y: 0
+          }],
+          fill: false,
+          borderColor: 'black',
+          borderWidth: 1,
+          pointRadius: 0
       }]
   },
   options:{
+    plugins: {
+        legend: {
+          display: false
+        }
+      },
       responsive: true,
       scales: {
           y: {
@@ -70,9 +103,42 @@ var rightChart = new Chart(myChart2, {
               'rgba(220, 20, 60, 0.6)',
           ],
           pointRadius: 5
+      },
+      {
+          type: 'line',
+          data: [{
+              x: 0,
+              y: 5
+          }, {
+              x: 0,
+              y: -5
+          }],
+          fill: false,
+          borderColor: 'black',
+          borderWidth: 1,
+          pointRadius: 0
+      },
+      {
+          type: 'line',
+          data: [{
+              x: -5,
+              y: 0
+          }, {
+              x: 5,
+              y: 0
+          }],
+          fill: false,
+          borderColor: 'black',
+          borderWidth: 1,
+          pointRadius: 0
       }]
   },
   options:{
+    plugins: {
+        legend: {
+          display: false
+        }
+      },
       responsive: true,
       scales: {
           y: {
@@ -105,10 +171,41 @@ var finalChart = new Chart(myChart3, {
                 'rgba(220, 20, 60, 0.6)'
             ],
             pointRadius: 5
+        },
+        {
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 5
+            }, {
+                x: 0,
+                y: -5
+            }],
+            fill: false,
+            borderColor: 'black',
+            pointRadius: 0
+        },
+        {
+            type: 'line',
+            data: [{
+                x: -5,
+                y: 0
+            }, {
+                x: 5,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'black',
+            pointRadius: 0
         }
         ]
     },
     options:{
+        plugins: {
+            legend: {
+              display: false
+            }
+          },
         responsive: true,
         scales: {
             y: {
