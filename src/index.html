@@ -14,10 +14,24 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <button id="testButton" type="button" class="btn btn-primary" onchange="myFunction()">Test-Button</button>
-    <p id="demo"></p>
+    <form>
+        <div class="form-group">
+          <label for="formControlRange">Example Range input</label>
+          <input type="range" min="1" max="20" class="form-control-range" id="formControlRange">
+          <output></output>
+        </div>
+      </form>
 
     <script>
+
+        let i = document.querySelector('input'),
+            o = document.querySelector('output');
+
+        o.innerHTML = i.value;
+
+        i.addEventListener('input', function() {
+            o.innerHTML = i.value;
+        }, false);  
 
       var testChart = new Chart(myChart, {
           type:'bar', 
