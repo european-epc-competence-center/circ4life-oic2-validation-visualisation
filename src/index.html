@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart - Test</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <button id="testButton" type="button" class="btn btn-primary" onchange="myFunction()">Test-Button</button>
+    <p id="demo"></p>
+
+    <script>
+
+      var testChart = new Chart(myChart, {
+          type:'bar', 
+          data:{
+              labels:['Berlin', 'Hamburg', 'München', 'Köln', 'Düsseldorf'],
+              datasets:[{
+                  label:'Population',
+                  data:[
+                        3669491,
+                        1847253,
+                        1484226,
+                        1087863,
+                        621877
+                  ],
+                  backgroundColor:[
+                      'rgba(255, 99, 132, 0.6)',
+                      'yellow',
+                      'blue',
+                      'grey',
+                      'red'
+                  ]
+              }]
+          },
+          options:{}
+      });
+    </script>
+
+</body>
+</html>
