@@ -87,19 +87,59 @@ var rightChart = new Chart(myChart2, {
   }
 });
 
+var finalChart = new Chart(myChart3, {
+    type:'scatter', 
+    data:{
+        datasets:[{
+            label:"Left Chart",
+            data: data,
+            backgroundColor:[
+                'rgba(30, 144, 255, 0.6)'
+            ],
+            pointRadius: 5
+        },
+        {
+            label:"Right Chart",
+            data: data2,
+            backgroundColor:[
+                'rgba(220, 20, 60, 0.6)'
+            ],
+            pointRadius: 5
+        }
+        ]
+    },
+    options:{
+        responsive: true,
+        scales: {
+            y: {
+                suggestedMin: -5,
+                suggestedMax: 5
+            },
+            x: {
+              suggestedMin: -5,
+              suggestedMax: 5
+            }
+        }
+    }
+  });
+
 function changefunction(){
 leftChart.data.datasets[0].data[0].x = i1.value;
 leftChart.update();
+finalChart.update();
 }
 function changefunction2(){
 leftChart.data.datasets[0].data[0].y = i2.value;
 leftChart.update();
+finalChart.update();
 }
 function changefunctionRight(){
 rightChart.data.datasets[0].data[0].x = i3.value;
 rightChart.update();
+finalChart.update();
 }
 function changefunctionRight2(){
 rightChart.data.datasets[0].data[0].y = i4.value;
 rightChart.update();
+finalChart.update();
 }
