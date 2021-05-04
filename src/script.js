@@ -162,7 +162,7 @@ var finalChart = new Chart(myChart3, {
             backgroundColor:[
                 'rgba(30, 144, 255, 0.6)'
             ],
-            pointRadius: 5
+            pointRadius: 10
         },
         {
             label:"Right Chart",
@@ -170,7 +170,7 @@ var finalChart = new Chart(myChart3, {
             backgroundColor:[
                 'rgba(220, 20, 60, 0.6)'
             ],
-            pointRadius: 5
+            pointRadius: 10
         },
         {
             type: 'line',
