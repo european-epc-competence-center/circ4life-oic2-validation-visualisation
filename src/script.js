@@ -71,7 +71,33 @@ var leftChart = new Chart(myChart, {
           borderColor: 'black',
           borderWidth: 1,
           pointRadius: 0
-      }]
+      },{
+              type: 'line',
+              data: [{
+                  x: 0,
+                  y: 0
+              }, {
+                  x: 0,
+                  y: 0
+              }],
+              fill: false,
+              borderColor: 'blue',
+              borderWidth: 1,
+              pointRadius: 0
+          },{
+              type: 'line',
+              data: [{
+                  x: 0,
+                  y: 0
+              }, {
+                  x: 0,
+                  y: 0
+              }],
+              fill: false,
+              borderColor: 'blue',
+              borderWidth: 1,
+              pointRadius: 0
+          }]
   },
   options:{
     plugins: {
@@ -131,7 +157,33 @@ var rightChart = new Chart(myChart2, {
           borderColor: 'black',
           borderWidth: 1,
           pointRadius: 0
-      }]
+      },{
+              type: 'line',
+              data: [{
+                  x: 0,
+                  y: 0
+              }, {
+                  x: 0,
+                  y: 0
+              }],
+              fill: false,
+              borderColor: 'red',
+              borderWidth: 1,
+              pointRadius: 0
+          },{
+              type: 'line',
+              data: [{
+                  x: 0,
+                  y: 0
+              }, {
+                  x: 0,
+                  y: 0
+              }],
+              fill: false,
+              borderColor: 'red',
+              borderWidth: 1,
+              pointRadius: 0
+          }]
   },
   options:{
     plugins: {
@@ -196,8 +248,8 @@ var finalChart = new Chart(myChart3, {
             }],
             fill: false,
             borderColor: 'black',
-            pointRadius: 0
-        }
+            pointRadius: 0,
+        },
         ]
     },
     options:{
@@ -222,21 +274,41 @@ var finalChart = new Chart(myChart3, {
 
 function changefunction(){
 leftChart.data.datasets[0].data[0].x = i1.value;
+//set x of horizontal line
+leftChart.data.datasets[3].data[1].x = i1.value;
+//set x of vertical line
+leftChart.data.datasets[4].data[0].x = i1.value;
+leftChart.data.datasets[4].data[1].x = i1.value;
 leftChart.update();
 finalChart.update();
 }
 function changefunction2(){
 leftChart.data.datasets[0].data[0].y = i2.value;
+//set y of horizontal line
+leftChart.data.datasets[3].data[0].y = i2.value;
+leftChart.data.datasets[3].data[1].y = i2.value;
+//set y of vertical line
+leftChart.data.datasets[4].data[1].y = i2.value;
 leftChart.update();
 finalChart.update();
 }
 function changefunctionRight(){
 rightChart.data.datasets[0].data[0].x = i3.value;
+//set x of horizontal line
+rightChart.data.datasets[3].data[1].x = i3.value;
+//set x of vertical line
+rightChart.data.datasets[4].data[0].x = i3.value;
+rightChart.data.datasets[4].data[1].x = i3.value;
 rightChart.update();
 finalChart.update();
 }
 function changefunctionRight2(){
 rightChart.data.datasets[0].data[0].y = i4.value;
+//set y of horizontal line
+rightChart.data.datasets[3].data[0].y = i4.value;
+rightChart.data.datasets[3].data[1].y = i4.value;
+//set y of vertical line
+rightChart.data.datasets[4].data[1].y = i4.value;
 rightChart.update();
 finalChart.update();
 }
