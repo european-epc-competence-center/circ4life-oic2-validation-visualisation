@@ -71,11 +71,11 @@ const quadrantsTest = {
     id: 'quadrantsTest',
     beforeDraw(chart, args, options) {
       const {ctx, chartArea: {left, top, right, bottom}, scales: {x, y}} = chart;
-      const midX = x;
-      const midY = y;
+      const midX = x.getPixelForValue(0);
+      const midY = y.getPixelForValue(0);
       ctx.save();
       ctx.fillStyle = options.topLeft;
-      ctx.fillRect(280, 126, i1.value*51, -(i2.value*23));
+      ctx.fillRect(midX, midY, i1.value*51, -(i2.value*23));
     }
   };
 
