@@ -21,6 +21,25 @@ const chartAreaBorder = {
     }
   };
 
+  const quadrants = {
+    id: 'quadrants',
+    beforeDraw(chart, args, options) {
+      const {ctx, chartArea: {left, top, right, bottom}, scales: {x, y}} = chart;
+      const midX = x.getPixelForValue(0);
+      const midY = y.getPixelForValue(0);
+      ctx.save();
+      ctx.fillStyle = options.topLeft;
+      ctx.fillRect(left, top, midX - left, midY - top);
+      ctx.fillStyle = options.topRight;
+      ctx.fillRect(midX, top, right - midX, midY - top);
+      ctx.fillStyle = options.bottomRight;
+      ctx.fillRect(midX, midY, right - midX, bottom - midY);
+      ctx.fillStyle = options.bottomLeft;
+      ctx.fillRect(left, midY, midX - left, bottom - midY);
+      ctx.restore();
+    }
+  };
+
 let i1 = document.getElementById('input1'),
     o1 = document.getElementById('output1');
     i2 = document.getElementById('input2');
@@ -276,6 +295,12 @@ var finalChart = new Chart(myChart3, {
                 borderColor: 'black',
                 borderWidth: 2,
                 borderDash: [5, 5]
+              },
+              quadrants: {
+                topLeft: '#e5e5e5',
+                topRight: '#99cc99',
+                bottomLeft: '#FF9999',
+                bottomRight: '#e5e5e5'
               }
           },
         responsive: true,
@@ -292,7 +317,7 @@ var finalChart = new Chart(myChart3, {
             }
         }
     },
-    plugins: [chartAreaBorder]
+    plugins: [chartAreaBorder, quadrants]
   });
 
 function changefunction(){
