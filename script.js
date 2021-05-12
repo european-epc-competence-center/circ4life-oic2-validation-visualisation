@@ -6,6 +6,21 @@ var data2 = [{
     x: 0,
     y: 0
 }]
+
+const chartAreaBorder = {
+    id: 'chartAreaBorder',
+    beforeDraw(chart, args, options) {
+      const {ctx, chartArea: {left, top, width, height}} = chart;
+      ctx.save();
+      ctx.strokeStyle = options.borderColor;
+      ctx.lineWidth = options.borderWidth;
+      ctx.setLineDash(options.borderDash || []);
+      ctx.lineDashOffset = options.borderDashOffset;
+      ctx.strokeRect(left, top, width, height);
+      ctx.restore();
+    }
+  };
+
 let i1 = document.getElementById('input1'),
     o1 = document.getElementById('output1');
     i2 = document.getElementById('input2');
@@ -256,20 +271,28 @@ var finalChart = new Chart(myChart3, {
         plugins: {
             legend: {
               display: false
-            }
+            },
+            chartAreaBorder: {
+                borderColor: 'black',
+                borderWidth: 2,
+                borderDash: [5, 5]
+              }
           },
         responsive: true,
         scales: {
             y: {
                 suggestedMin: -5,
-                suggestedMax: 5
+                suggestedMax: 5,
+                display: false
             },
             x: {
               suggestedMin: -5,
-              suggestedMax: 5
+              suggestedMax: 5,
+              display: false
             }
         }
-    }
+    },
+    plugins: [chartAreaBorder]
   });
 
 function changefunction(){
