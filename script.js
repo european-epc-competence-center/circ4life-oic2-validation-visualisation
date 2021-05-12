@@ -65,7 +65,19 @@ i3.addEventListener('input', function() {
 }, false);
 i4.addEventListener('input', function() {
     o4.innerHTML = i4.value;
-}, false);    
+}, false);  
+
+const quadrantsTest = {
+    id: 'quadrantsTest',
+    beforeDraw(chart, args, options) {
+      const {ctx, chartArea: {left, top, right, bottom}, scales: {x, y}} = chart;
+      const midX = x;
+      const midY = y;
+      ctx.save();
+      ctx.fillStyle = options.topLeft;
+      ctx.fillRect(280, 126, i1.value*51, -(i2.value*23));
+    }
+  };
 
 var leftChart = new Chart(myChart, {
   type:'scatter', 
@@ -137,6 +149,12 @@ var leftChart = new Chart(myChart, {
     plugins: {
         legend: {
           display: false
+        },
+        quadrantsTest: {
+          topLeft: '#e5e5e5',
+          topRight: '#99cc99',
+          bottomLeft: '#FF9999',
+          bottomRight: '#e5e5e5'
         }
       },
       responsive: true,
@@ -150,7 +168,8 @@ var leftChart = new Chart(myChart, {
             suggestedMax: 5
           }
       }
-  }
+  }, 
+  plugins: [quadrantsTest]
 });
 
 var rightChart = new Chart(myChart2, {
