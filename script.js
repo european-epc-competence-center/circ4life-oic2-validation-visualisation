@@ -67,15 +67,27 @@ i4.addEventListener('input', function() {
     o4.innerHTML = i4.value;
 }, false);  
 
-const quadrantsTest = {
-    id: 'quadrantsTest',
+const quadrantsLeftChart = {
+    id: 'quadrantsLeftChart',
     beforeDraw(chart, args, options) {
       const {ctx, chartArea: {left, top, right, bottom}, scales: {x, y}} = chart;
       const midX = x.getPixelForValue(0);
       const midY = y.getPixelForValue(0);
       ctx.save();
-      ctx.fillStyle = options.topLeft;
-      ctx.fillRect(midX, midY, i1.value*51, -(i2.value*23));
+      ctx.fillStyle = options.chartLeft;
+      ctx.fillRect(midX, midY, i1.value*109, -(i2.value*53));
+    }
+  };
+
+  const quadrantsRightChart = {
+    id: 'quadrantsRightChart',
+    beforeDraw(chart, args, options) {
+      const {ctx, chartArea: {left, top, right, bottom}, scales: {x, y}} = chart;
+      const midX = x.getPixelForValue(0);
+      const midY = y.getPixelForValue(0);
+      ctx.save();
+      ctx.fillStyle = options.chartRight;
+      ctx.fillRect(midX, midY, i3.value*109, -(i4.value*53));
     }
   };
 
@@ -149,12 +161,6 @@ var leftChart = new Chart(myChart, {
     plugins: {
         legend: {
           display: false
-        },
-        quadrantsTest: {
-          topLeft: '#e5e5e5',
-          topRight: '#99cc99',
-          bottomLeft: '#FF9999',
-          bottomRight: '#e5e5e5'
         }
       },
       responsive: true,
@@ -168,8 +174,7 @@ var leftChart = new Chart(myChart, {
             suggestedMax: 5
           }
       }
-  }, 
-  plugins: [quadrantsTest]
+  }
 });
 
 var rightChart = new Chart(myChart2, {
@@ -320,6 +325,12 @@ var finalChart = new Chart(myChart3, {
                 topRight: '#99cc99',
                 bottomLeft: '#FF9999',
                 bottomRight: '#e5e5e5'
+              },
+              quadrantsLeftChart: {
+                chartLeft: 'rgba(171,223,228,0.6)'
+              },
+              quadrantsRightChart: {
+                chartRight: 'rgba(255,204,204,0.6)'
               }
           },
         responsive: true,
@@ -336,7 +347,7 @@ var finalChart = new Chart(myChart3, {
             }
         }
     },
-    plugins: [chartAreaBorder, quadrants]
+    plugins: [chartAreaBorder, quadrants, quadrantsLeftChart, quadrantsRightChart]
   });
 
 function changefunction(){
