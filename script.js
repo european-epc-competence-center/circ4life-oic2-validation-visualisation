@@ -75,7 +75,7 @@ const quadrantsLeftChart = {
       const midY = y.getPixelForValue(0);
       ctx.save();
       ctx.fillStyle = options.chartLeft;
-      ctx.fillRect(midX, midY, i1.value*109, -(i2.value*53));
+      ctx.fillRect(midX, midY, i1.value*midX/5.1, -(i2.value*midY/5.2));
     }
   };
 
@@ -87,7 +87,7 @@ const quadrantsLeftChart = {
       const midY = y.getPixelForValue(0);
       ctx.save();
       ctx.fillStyle = options.chartRight;
-      ctx.fillRect(midX, midY, i3.value*109, -(i4.value*53));
+      ctx.fillRect(midX, midY, i3.value*midX/5.1, -(i4.value*midY/5.2));
     }
   };
 
@@ -166,12 +166,12 @@ var leftChart = new Chart(myChart, {
       responsive: true,
       scales: {
           y: {
-              suggestedMin: -5,
-              suggestedMax: 5
+              min: -5,
+              max: 5
           },
           x: {
-            suggestedMin: -5,
-            suggestedMax: 5
+            min: -5,
+            max: 5
           }
       }
   }
@@ -252,12 +252,12 @@ var rightChart = new Chart(myChart2, {
       responsive: true,
       scales: {
           y: {
-              suggestedMin: -5,
-              suggestedMax: 5
+              min: -5,
+              max: 5
           },
           x: {
-            suggestedMin: -5,
-            suggestedMax: 5
+            min: -5,
+            max: 5
           }
       }
   }
@@ -336,13 +336,13 @@ var finalChart = new Chart(myChart3, {
         responsive: true,
         scales: {
             y: {
-                suggestedMin: -5,
-                suggestedMax: 5,
+                min: -5,
+                max: 5,
                 display: false
             },
             x: {
-              suggestedMin: -5,
-              suggestedMax: 5,
+              min: -5,
+              max: 5,
               display: false
             }
         }
