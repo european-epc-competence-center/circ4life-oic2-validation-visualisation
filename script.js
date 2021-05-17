@@ -327,10 +327,10 @@ var finalChart = new Chart(myChart3, {
                 bottomRight: '#e5e5e5'
               },
               quadrantsLeftChart: {
-                chartLeft: 'rgba(171,223,228,0.6)'
+                chartLeft: 'rgba(37, 85, 217, 0.6)'
               },
               quadrantsRightChart: {
-                chartRight: 'rgba(255,204,204,0.6)'
+                chartRight: 'rgba(37, 85, 217, 0.6)'
               }
           },
         responsive: true,
@@ -389,4 +389,19 @@ rightChart.data.datasets[3].data[1].y = i4.value;
 rightChart.data.datasets[4].data[1].y = i4.value;
 rightChart.update();
 finalChart.update();
+}
+function cebm1ChangeColor(){
+    finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(37, 85, 217, 0.6)';
+    finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(37, 85, 217, 0.6)';
+    finalChart.update();
+}
+function cebm2ChangeColor(){
+    finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(243, 159, 24, 0.6)';
+    finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(243, 159, 24, 0.6)';
+    finalChart.update();
+}
+function cebm3ChangeColor(){
+    finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(203, 40, 33, 0.6)';
+    finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(203, 40, 33, 0.6)';
+    finalChart.update();
 }
