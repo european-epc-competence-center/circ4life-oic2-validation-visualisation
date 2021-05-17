@@ -82,4 +82,13 @@ public class ModelController {
          return newData;
     }
 
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            path = "deleteModelById/{id}"
+    )
+    public String deleteModel(@PathVariable Integer id){
+                modelRepository.deleteById(id);
+                return "ok";
+            }
+
 }
