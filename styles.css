@@ -1,3 +1,7 @@
 .keepRight{
     float: right !important;
 }
+
+* {
+    border-radius: 0 !important;
+  }
