@@ -5,3 +5,102 @@
 * {
     border-radius: 0 !important;
   }
+
+  .top-left {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+  }
+
+  .top-right {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+
+  .bottom-left {
+    position: absolute;
+    bottom: 20px;
+    left: 46px;
+  }
+
+  .bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+  }
+
+  .centered {
+    position: absolute;
+    top: 48%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+  }
+
+  .leftChart-zero {
+    position: absolute;
+    top: 33%;
+    right: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  .rightChart-zero {
+    position: absolute;
+    top: 33%;
+    right: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media only screen and (max-width: 768px) { 
+
+    .bottom-right {
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
+        font-size: 10px;
+      }
+
+      .top-left {
+        position: absolute;
+        top: 20px;
+        left: 40px;
+        font-size: 10px;
+      }
+    
+      .top-right {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 10px;
+      }
+    
+      .bottom-left {
+        position: absolute;
+        bottom: 20px;
+        left: 46px;
+        font-size: 10px;
+      }
+
+      .centered {
+        position: absolute;
+        top: 42%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+        font-size: 13px;
+      }
+
+      .leftChart-zero {
+        position: absolute;
+        top: 28%;
+        right: 43%;
+        transform: translate(-50%, -50%);
+      }
+
+      .rightChart-zero {
+        position: absolute;
+        top: 32%;
+        right: 43%;
+        transform: translate(-50%, -50%);
+      }
+
+  }
