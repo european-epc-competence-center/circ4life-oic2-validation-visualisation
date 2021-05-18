@@ -30,13 +30,6 @@
     right: 40px;
   }
 
-  .centered {
-    position: absolute;
-    top: 48%;
-    left: 51%;
-    transform: translate(-50%, -50%);
-  }
-
   .leftChart-zero {
     position: absolute;
     top: 33%;
@@ -79,14 +72,6 @@
         bottom: 20px;
         left: 46px;
         font-size: 10px;
-      }
-
-      .centered {
-        position: absolute;
-        top: 42%;
-        left: 53%;
-        transform: translate(-50%, -50%);
-        font-size: 13px;
       }
 
       .leftChart-zero {
