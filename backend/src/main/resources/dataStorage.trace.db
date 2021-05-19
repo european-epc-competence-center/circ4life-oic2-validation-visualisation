@@ -1,4 +1,0 @@
-2021-05-17 10:18:13 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabelle "MODEL" nicht gefunden
-Table "MODEL" not found; SQL statement:
-select model0_.id as id1_0_, model0_.business_as_usual_to_innovative as business2_0_, model0_.linear_to_circular as linear_t3_0_, model0_.low_business_potential_to_high_business_potential as low_busi4_0_, model0_.low_industry_appicability_to_high_industry_applicability as low_indu5_0_, model0_.model_type as model_ty6_0_ from model model0_ [42102-200]

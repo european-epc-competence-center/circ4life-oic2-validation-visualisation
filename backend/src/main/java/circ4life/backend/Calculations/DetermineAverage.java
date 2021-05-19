@@ -3,6 +3,7 @@ package circ4life.backend.Calculations;
 import circ4life.backend.entities.Model;
 import com.sun.istack.NotNull;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DetermineAverage {
@@ -10,65 +11,44 @@ public class DetermineAverage {
     public DetermineAverage() {
     }
 
+    // returns Model with average values
     public Model createAverageModel(List<Model> modelList) {
         Model averageType = new Model();
+        Double[] averageList = getAverage(modelList);
 
-        averageType.setModelType(this.averageModelType(modelList));
-        averageType.setLinearToCircular(this.averageLinearToCircular(modelList));
-        averageType.setBusinessAsUsualToInnovative(this.averageBusinessAsUsualToInnovative(modelList));
-        averageType.setLowBusinessPotentialToHighBusinessPotential(this.averageLowBusinessPotentialToHighBusinessPotential(modelList));
-        averageType.setLowIndustryAppicabilityToHighIndustryApplicability(this.averageLowIndustryAppicabilityToHighIndustryApplicability(modelList));
+        averageType.setModelType(modelList.get(0).getModelType() + "Average");
+        averageType.setLinearToCircular(averageList[0]);
+        averageType.setInnovativeness(averageList[1]);
+        averageType.setBusinessPotential(averageList[2]);
+        averageType.setIndustryApplicability(averageList[3]);
 
         return averageType;
     }
 
-    private String averageModelType(List<Model> models) {
-        String modelName = "";
+    // returns Double Array with average values from the Modellist
+    private Double[] getAverage(List<Model> models){
+        int i = 0;
+        double averageLinear,averageInnovative,averageBusiness,averageApplicability;
+        averageLinear = averageInnovative = averageBusiness = averageApplicability = 0;
         for (Model model : models) {
-            modelName = model.getModelType();
+            if(checkNotNull(model)) {
+                averageLinear += model.getLinearToCircular();
+                averageInnovative += model.getInnovativeness();
+                averageBusiness += model.getBusinessPotential();
+                averageApplicability += model.getIndustryApplicability();
+                i++;
+            }
         }
-        modelName = modelName + "Average";
-        return modelName;
+        if(i != 0) {
+            return new Double[]{averageLinear / i, averageInnovative / i, averageBusiness / i, averageApplicability / i};
+        }else{return new Double[]{0.0,0.0,0.0,0.0};}
     }
 
-    private Double averageLinearToCircular(List<Model> models) {
-        int i = 0;
-        double averageValue = 0;
-        for (Model model : models) {
-            averageValue += model.getLinearToCircular();
-            i++;
-        }
-        return averageValue / i;
-    }
-
-    private Double averageBusinessAsUsualToInnovative(List<Model> models) {
-        int i = 0;
-        double averageValue = 0;
-        for (Model model : models) {
-            averageValue += model.getBusinessAsUsualToInnovative();
-            i++;
-        }
-        return averageValue / i;
-    }
-
-    private Double averageLowBusinessPotentialToHighBusinessPotential(List<Model> models) {
-        int i = 0;
-        double averageValue = 0;
-        for (Model model : models) {
-            averageValue += model.getLowBusinessPotentialToHighBusinessPotential();
-            i++;
-        }
-        return averageValue / i;
-    }
-
-    private Double averageLowIndustryAppicabilityToHighIndustryApplicability(List<Model> models) {
-        int i = 0;
-        double averageValue = 0;
-        for (Model model : models) {
-            averageValue += model.getLowIndustryAppicabilityToHighIndustryApplicability();
-            i++;
-        }
-        return averageValue / i;
+    // returns true if current Model does not have any NullPointer. Else false
+    private Boolean checkNotNull(Model model){
+        if(model.getLinearToCircular() != null && model.getInnovativeness() != null && model.getBusinessPotential() != null && model.getIndustryApplicability() != null){
+            return true;
+        }else{return false;}
     }
 
 }

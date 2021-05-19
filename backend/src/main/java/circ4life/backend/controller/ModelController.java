@@ -51,9 +51,10 @@ public class ModelController {
     )
     public Model getDataByOneModelType(@PathVariable String type){
         DetermineAverage determineAverage = new DetermineAverage();
-        Model averageType = determineAverage.createAverageModel(modelRepository.findByModelType(type));
+        if(!modelRepository.findByModelType(type).isEmpty()) {
+            return determineAverage.createAverageModel(modelRepository.findByModelType(type));
+        }else{return new Model("Model Type does not exist yet",0.0,0.0,0.0,0.0);}
 
-        return averageType;
     }
 
     @RequestMapping(
@@ -62,15 +63,10 @@ public class ModelController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public List<Model> getDataByAllModelType(@PathVariable String typeA, @PathVariable String typeB, @PathVariable String typeC){
-        DetermineAverage determineAverage = new DetermineAverage();
-        Model averageTypeA = determineAverage.createAverageModel(modelRepository.findByModelType(typeA));
-        Model averageTypeB = determineAverage.createAverageModel(modelRepository.findByModelType(typeB));
-        Model averageTypeC = determineAverage.createAverageModel(modelRepository.findByModelType(typeC));
-
         List<Model> averageAllTypes = new ArrayList<Model>();
-        averageAllTypes.add(averageTypeA);
-        averageAllTypes.add(averageTypeB);
-        averageAllTypes.add(averageTypeC);
+        averageAllTypes.add(getDataByOneModelType(typeA));
+        averageAllTypes.add(getDataByOneModelType(typeB));
+        averageAllTypes.add(getDataByOneModelType(typeC));
 
         return averageAllTypes;
     }
@@ -81,14 +77,5 @@ public class ModelController {
     public Model setData(@RequestBody Model newData){ modelRepository.save(newData);
          return newData;
     }
-
-    @RequestMapping(
-            method = RequestMethod.DELETE,
-            path = "deleteModelById/{id}"
-    )
-    public String deleteModel(@PathVariable Integer id){
-                modelRepository.deleteById(id);
-                return "ok";
-            }
 
 }

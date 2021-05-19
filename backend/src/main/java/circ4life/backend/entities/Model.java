@@ -19,21 +19,22 @@ public class Model {
     private Double linearToCircular;
 
     @NotNull
-    private Double businessAsUsualToInnovative;
+    private Double innovativeness;
 
     @NotNull
-    private Double lowBusinessPotentialToHighBusinessPotential;
+    private Double businessPotential;
 
     @NotNull
-    private Double lowIndustryAppicabilityToHighIndustryApplicability;
+    private Double industryApplicability;
 
-    public Model(String modelType, Double linearToCircular, Double businessAsUsualToInnovative, Double lowBusinessPotentialToHighBusinessPotential, Double lowIndustryAppicabilityToHighIndustryApplicability){
+    public Model(String modelType, Double linearToCircular, Double innovativeness, Double businessPotential, Double industryApplicability){
         this.modelType = modelType;
         this.linearToCircular = linearToCircular;
-        this.businessAsUsualToInnovative = businessAsUsualToInnovative;
-        this.lowBusinessPotentialToHighBusinessPotential = lowBusinessPotentialToHighBusinessPotential;
-        this.lowIndustryAppicabilityToHighIndustryApplicability = lowIndustryAppicabilityToHighIndustryApplicability;
+        this.innovativeness = innovativeness;
+        this.businessPotential = businessPotential;
+        this.industryApplicability = industryApplicability;
     }
+
 
     public Model() {
 
@@ -63,27 +64,27 @@ public class Model {
         this.linearToCircular = linearToCircular;
     }
 
-    public Double getBusinessAsUsualToInnovative() {
-        return businessAsUsualToInnovative;
+    public Double getInnovativeness() {
+        return innovativeness;
     }
 
-    public void setBusinessAsUsualToInnovative(Double businessAsUsualToInnovative) {
-        this.businessAsUsualToInnovative = businessAsUsualToInnovative;
+    public void setInnovativeness(Double innovativeness) {
+        this.innovativeness = innovativeness;
     }
 
-    public Double getLowBusinessPotentialToHighBusinessPotential() {
-        return lowBusinessPotentialToHighBusinessPotential;
+    public Double getBusinessPotential() {
+        return businessPotential;
     }
 
-    public void setLowBusinessPotentialToHighBusinessPotential(Double lowBusinessPotentialToHighBusinessPotential) {
-        this.lowBusinessPotentialToHighBusinessPotential = lowBusinessPotentialToHighBusinessPotential;
+    public void setBusinessPotential(Double businessPotential) {
+        this.businessPotential = businessPotential;
     }
 
-    public Double getLowIndustryAppicabilityToHighIndustryApplicability() {
-        return lowIndustryAppicabilityToHighIndustryApplicability;
+    public Double getIndustryApplicability() {
+        return industryApplicability;
     }
 
-    public void setLowIndustryAppicabilityToHighIndustryApplicability(Double lowIndustryAppicabilityToHighIndustryApplicability) {
-        this.lowIndustryAppicabilityToHighIndustryApplicability = lowIndustryAppicabilityToHighIndustryApplicability;
+    public void setIndustryApplicability(Double industryApplicability) {
+        this.industryApplicability = industryApplicability;
     }
 }
