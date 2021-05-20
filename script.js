@@ -1,8 +1,32 @@
-var data = [{
+var dataA12 = [{
     x: 0,
     y: 0
 }]
-var data2 = [{
+var dataA34 = [{
+    x: 0,
+    y: 0
+}]
+var dataB12 = [{
+    x: 0,
+    y: 0
+}]
+var dataB34 = [{
+    x: 0,
+    y: 0
+}]
+var dataC12 = [{
+    x: 0,
+    y: 0
+}]
+var dataC34 = [{
+    x: 0,
+    y: 0
+}]
+var dataF12 = [{
+    x: 0,
+    y: 0
+}]
+var dataF34 = [{
     x: 0,
     y: 0
 }]
@@ -40,32 +64,91 @@ const chartAreaBorder = {
     }
   };
 
-let i1 = document.getElementById('input1'),
-    o1 = document.getElementById('output1');
-    i2 = document.getElementById('input2');
-    o2 = document.getElementById('output2');
-    i3 = document.getElementById('input3'),
-    o3 = document.getElementById('output3');
-    i4 = document.getElementById('input4');
-    o4 = document.getElementById('output4');
+let ia1 = document.getElementById('inputA1'),
+    oa1 = document.getElementById('outputA1');
+    ia2 = document.getElementById('inputA2');
+    oa2 = document.getElementById('outputA2');
+    ia3 = document.getElementById('inputA3'),
+    oa3 = document.getElementById('outputA3');
+    ia4 = document.getElementById('inputA4');
+    oa4 = document.getElementById('outputA4');
+    ib1 = document.getElementById('inputB1'),
+    ob1 = document.getElementById('outputB1');
+    ib2 = document.getElementById('inputB2');
+    ob2 = document.getElementById('outputB2');
+    ib3 = document.getElementById('inputB3'),
+    ob3 = document.getElementById('outputB3');
+    ib4 = document.getElementById('inputB4');
+    ob4 = document.getElementById('outputB4');
+    ic1 = document.getElementById('inputC1'),
+    oc1 = document.getElementById('outputC1');
+    ic2 = document.getElementById('inputC2');
+    oc2 = document.getElementById('outputC2');
+    ic3 = document.getElementById('inputC3'),
+    oc3 = document.getElementById('outputC3');
+    ic4 = document.getElementById('inputC4');
+    oc4 = document.getElementById('outputC4');
 
-o1.innerHTML = i1.value;
-o2.innerHTML = i2.value;
-o3.innerHTML = i3.value;
-o4.innerHTML = i4.value;
+oa1.innerHTML = ia1.value;
+oa2.innerHTML = ia2.value;
+oa3.innerHTML = ia3.value;
+oa4.innerHTML = ia4.value;
 
-i1.addEventListener('input', function() {
-    o1.innerHTML = i1.value;
+ob1.innerHTML = ib1.value;
+ob2.innerHTML = ib2.value;
+ob3.innerHTML = ib3.value;
+ob4.innerHTML = ib4.value;
+
+oc1.innerHTML = ic1.value;
+oc2.innerHTML = ic2.value;
+oc3.innerHTML = ic3.value;
+oc4.innerHTML = ic4.value;
+
+
+ia1.addEventListener('input', function() {
+    oa1.innerHTML = ia1.value;
 }, false);
-i2.addEventListener('input', function() {
-    o2.innerHTML = i2.value;
+ia2.addEventListener('input', function() {
+    oa2.innerHTML = ia2.value;
 }, false); 
-i3.addEventListener('input', function() {
-    o3.innerHTML = i3.value;
+ia3.addEventListener('input', function() {
+    oa3.innerHTML = ia3.value;
 }, false);
-i4.addEventListener('input', function() {
-    o4.innerHTML = i4.value;
+ia4.addEventListener('input', function() {
+    oa4.innerHTML = ia4.value;
 }, false);  
+
+ib1.addEventListener('input', function() {
+    ob1.innerHTML = ib1.value;
+}, false);
+ib2.addEventListener('input', function() {
+    ob2.innerHTML = ib2.value;
+}, false); 
+ib3.addEventListener('input', function() {
+    ob3.innerHTML = ib3.value;
+}, false);
+ib4.addEventListener('input', function() {
+    ob4.innerHTML = ib4.value;
+}, false); 
+
+ic1.addEventListener('input', function() {
+    oc1.innerHTML = ic1.value;
+}, false);
+ic2.addEventListener('input', function() {
+    oc2.innerHTML = ic2.value;
+}, false); 
+ic3.addEventListener('input', function() {
+    oc3.innerHTML = ic3.value;
+}, false);
+ic4.addEventListener('input', function() {
+    oc4.innerHTML = ic4.value;
+}, false); 
+
+f1 = ia1.value;
+f2 = ia2.value;
+f3 = ia3.value;
+f4 = ia4.value;
+whatCEBM = 1;
 
 const quadrantsLeftChart = {
     id: 'quadrantsLeftChart',
@@ -75,7 +158,7 @@ const quadrantsLeftChart = {
       const midY = y.getPixelForValue(0);
       ctx.save();
       ctx.fillStyle = options.chartLeft;
-      ctx.fillRect(midX, midY, i1.value*midX/5.1, -(i2.value*midY/5.2));
+      ctx.fillRect(midX, midY, f1*midX/5.1, -(f2*midY/5.2));
     }
   };
 
@@ -87,7 +170,7 @@ const quadrantsLeftChart = {
       const midY = y.getPixelForValue(0);
       ctx.save();
       ctx.fillStyle = options.chartRight;
-      ctx.fillRect(midX, midY, i3.value*midX/5.1, -(i4.value*midY/5.2));
+      ctx.fillRect(midX, midY, f3*midX/5.1, -(f4*midY/5.2));
     }
   };
 
@@ -95,13 +178,20 @@ var leftChart = new Chart(myChart, {
   type:'scatter', 
   data:{
       datasets:[{
-          label:"Left Chart",
-          data: data,
+          label:"dataA12Chart",
+          data: dataA12,
           backgroundColor:[
               'rgba(30, 144, 255, 0.6)',
           ],
           pointRadius: 5
-      },
+      },{
+        label:"dataA34Chart",
+        data: dataA34,
+        backgroundColor:[
+            'rgba(30, 144, 255, 0.6)',
+        ],
+        pointRadius: 5
+    },
       {
           type: 'line',
           data: [{
@@ -155,7 +245,33 @@ var leftChart = new Chart(myChart, {
               borderColor: 'blue',
               borderWidth: 1,
               pointRadius: 0
-          }]
+          },{
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'blue',
+            borderWidth: 1,
+            pointRadius: 0
+        },{
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'blue',
+            borderWidth: 1,
+            pointRadius: 0
+        }]
   },
   options:{
     plugins: {
@@ -181,13 +297,20 @@ var rightChart = new Chart(myChart2, {
   type:'scatter', 
   data:{
       datasets:[{
-          label:"Right Chart",
-          data: data2,
+          label:"dataB12Chart",
+          data: dataB12,
           backgroundColor:[
-              'rgba(220, 20, 60, 0.6)',
+              'orange',
           ],
           pointRadius: 5
-      },
+      },{
+        label:"dataB34Chart",
+        data: dataB34,
+        backgroundColor:[
+            'orange',
+        ],
+        pointRadius: 5
+    },
       {
           type: 'line',
           data: [{
@@ -225,7 +348,7 @@ var rightChart = new Chart(myChart2, {
                   y: 0
               }],
               fill: false,
-              borderColor: 'red',
+              borderColor: 'orange',
               borderWidth: 1,
               pointRadius: 0
           },{
@@ -238,10 +361,36 @@ var rightChart = new Chart(myChart2, {
                   y: 0
               }],
               fill: false,
-              borderColor: 'red',
+              borderColor: 'orange',
               borderWidth: 1,
               pointRadius: 0
-          }]
+          },{
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'orange',
+            borderWidth: 1,
+            pointRadius: 0
+        },{
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'orange',
+            borderWidth: 1,
+            pointRadius: 0
+        }]
   },
   options:{
     plugins: {
@@ -263,22 +412,142 @@ var rightChart = new Chart(myChart2, {
   }
 });
 
+var thirdChart = new Chart(myChart4, {
+    type:'scatter', 
+    data:{
+        datasets:[{
+            label:"dataC12Chart",
+            data: dataC12,
+            backgroundColor:[
+                'rgba(220, 20, 60, 0.6)',
+            ],
+            pointRadius: 5
+        },
+        {
+            label:"dataC34Chart",
+            data: dataC34,
+            backgroundColor:[
+                'rgba(220, 20, 60, 0.6)',
+            ],
+            pointRadius: 5
+        },
+        {
+            type: 'line',
+            data: [{
+                x: 0,
+                y: 5
+            }, {
+                x: 0,
+                y: -5
+            }],
+            fill: false,
+            borderColor: 'black',
+            borderWidth: 1,
+            pointRadius: 0
+        },
+        {
+            type: 'line',
+            data: [{
+                x: -5,
+                y: 0
+            }, {
+                x: 5,
+                y: 0
+            }],
+            fill: false,
+            borderColor: 'black',
+            borderWidth: 1,
+            pointRadius: 0
+        },{
+                type: 'line',
+                data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 0
+                }],
+                fill: false,
+                borderColor: 'red',
+                borderWidth: 1,
+                pointRadius: 0
+            },{
+                type: 'line',
+                data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 0
+                }],
+                fill: false,
+                borderColor: 'red',
+                borderWidth: 1,
+                pointRadius: 0
+            },{
+                type: 'line',
+                data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 0
+                }],
+                fill: false,
+                borderColor: 'red',
+                borderWidth: 1,
+                pointRadius: 0
+            },{
+                type: 'line',
+                data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 0
+                }],
+                fill: false,
+                borderColor: 'red',
+                borderWidth: 1,
+                pointRadius: 0
+            }]
+    },
+    options:{
+      plugins: {
+          legend: {
+            display: false
+          }
+        },
+        responsive: true,
+        scales: {
+            y: {
+                min: -5,
+                max: 5
+            },
+            x: {
+              min: -5,
+              max: 5
+            }
+        }
+    }
+  });
+
 var finalChart = new Chart(myChart3, {
     type:'scatter', 
     data:{
         datasets:[{
             label:"Left Chart",
-            data: data,
+            data: dataF12,
             backgroundColor:[
-                'rgba(30, 144, 255, 0.6)'
+                'black'
             ],
             pointRadius: 10
         },
         {
             label:"Right Chart",
-            data: data2,
+            data: dataF34,
             backgroundColor:[
-                'rgba(220, 20, 60, 0.6)'
+                'black'
             ],
             pointRadius: 10
         },
@@ -350,58 +619,150 @@ var finalChart = new Chart(myChart3, {
     plugins: [chartAreaBorder, quadrants, quadrantsLeftChart, quadrantsRightChart]
   });
 
-function changefunction(){
-leftChart.data.datasets[0].data[0].x = i1.value;
+function changefunctionA(){
+leftChart.data.datasets[0].data[0].x = ia1.value;
 //set x of horizontal line
-leftChart.data.datasets[3].data[1].x = i1.value;
+leftChart.data.datasets[4].data[1].x = ia1.value;
 //set x of vertical line
-leftChart.data.datasets[4].data[0].x = i1.value;
-leftChart.data.datasets[4].data[1].x = i1.value;
-leftChart.update();
-finalChart.update();
-}
-function changefunction2(){
-leftChart.data.datasets[0].data[0].y = i2.value;
+leftChart.data.datasets[5].data[0].x = ia1.value;
+leftChart.data.datasets[5].data[1].x = ia1.value;
+
+leftChart.data.datasets[0].data[0].y = ia2.value;
 //set y of horizontal line
-leftChart.data.datasets[3].data[0].y = i2.value;
-leftChart.data.datasets[3].data[1].y = i2.value;
+leftChart.data.datasets[4].data[0].y = ia2.value;
+leftChart.data.datasets[4].data[1].y = ia2.value;
 //set y of vertical line
-leftChart.data.datasets[4].data[1].y = i2.value;
-leftChart.update();
-finalChart.update();
-}
-function changefunctionRight(){
-rightChart.data.datasets[0].data[0].x = i3.value;
+leftChart.data.datasets[5].data[1].y = ia2.value;
+
+leftChart.data.datasets[1].data[0].x = ia3.value;
 //set x of horizontal line
-rightChart.data.datasets[3].data[1].x = i3.value;
+leftChart.data.datasets[6].data[1].x = ia3.value;
 //set x of vertical line
-rightChart.data.datasets[4].data[0].x = i3.value;
-rightChart.data.datasets[4].data[1].x = i3.value;
-rightChart.update();
-finalChart.update();
-}
-function changefunctionRight2(){
-rightChart.data.datasets[0].data[0].y = i4.value;
+leftChart.data.datasets[7].data[0].x = ia3.value;
+leftChart.data.datasets[7].data[1].x = ia3.value;
+
+leftChart.data.datasets[1].data[0].y = ia4.value;
 //set y of horizontal line
-rightChart.data.datasets[3].data[0].y = i4.value;
-rightChart.data.datasets[3].data[1].y = i4.value;
+leftChart.data.datasets[6].data[0].y = ia4.value;
+leftChart.data.datasets[6].data[1].y = ia4.value;
 //set y of vertical line
-rightChart.data.datasets[4].data[1].y = i4.value;
-rightChart.update();
+leftChart.data.datasets[7].data[1].y = ia4.value;
+leftChart.update();
+if(whatCEBM == 1){
+    f1 = finalChart.data.datasets[0].data[0]. x = ia1.value;
+    f2 = finalChart.data.datasets[0].data[0]. y = ia2.value;
+    f3 = finalChart.data.datasets[1].data[0]. x = ia3.value;
+    f4 = finalChart.data.datasets[1].data[0]. y = ia4.value;
+}
 finalChart.update();
 }
+
+function changefunctionB(){
+    rightChart.data.datasets[0].data[0].x = ib1.value;
+    //set x of horizontal line
+    rightChart.data.datasets[4].data[1].x = ib1.value;
+    //set x of vertical line
+    rightChart.data.datasets[5].data[0].x = ib1.value;
+    rightChart.data.datasets[5].data[1].x = ib1.value;
+    
+    rightChart.data.datasets[0].data[0].y = ib2.value;
+    //set y of horizontal line
+    rightChart.data.datasets[4].data[0].y = ib2.value;
+    rightChart.data.datasets[4].data[1].y = ib2.value;
+    //set y of vertical line
+    rightChart.data.datasets[5].data[1].y = ib2.value;
+    
+    rightChart.data.datasets[1].data[0].x = ib3.value;
+    //set x of horizontal line
+    rightChart.data.datasets[6].data[1].x = ib3.value;
+    //set x of vertical line
+    rightChart.data.datasets[7].data[0].x = ib3.value;
+    rightChart.data.datasets[7].data[1].x = ib3.value;
+    
+    rightChart.data.datasets[1].data[0].y = ib4.value;
+    //set y of horizontal line
+    rightChart.data.datasets[6].data[0].y = ib4.value;
+    rightChart.data.datasets[6].data[1].y = ib4.value;
+    //set y of vertical line
+    rightChart.data.datasets[7].data[1].y = ib4.value;
+    rightChart.update();
+    if(whatCEBM == 2){
+        f1 = finalChart.data.datasets[0].data[0]. x = ib1.value;
+        f2 = finalChart.data.datasets[0].data[0]. y = ib2.value;
+        f3 = finalChart.data.datasets[1].data[0]. x = ib3.value;
+        f4 = finalChart.data.datasets[1].data[0]. y = ib4.value;
+    }
+    finalChart.update();
+    }
+
+    function changefunctionC(){
+        thirdChart.data.datasets[0].data[0].x = ic1.value;
+        //set x of horizontal line
+        thirdChart.data.datasets[4].data[1].x = ic1.value;
+        //set x of vertical line
+        thirdChart.data.datasets[5].data[0].x = ic1.value;
+        thirdChart.data.datasets[5].data[1].x = ic1.value;
+        
+        thirdChart.data.datasets[0].data[0].y = ic2.value;
+        //set y of horizontal line
+        thirdChart.data.datasets[4].data[0].y = ic2.value;
+        thirdChart.data.datasets[4].data[1].y = ic2.value;
+        //set y of vertical line
+        thirdChart.data.datasets[5].data[1].y = ic2.value;
+        
+        thirdChart.data.datasets[1].data[0].x = ic3.value;
+        //set x of horizontal line
+        thirdChart.data.datasets[6].data[1].x = ic3.value;
+        //set x of vertical line
+        thirdChart.data.datasets[7].data[0].x = ic3.value;
+        thirdChart.data.datasets[7].data[1].x = ic3.value;
+        
+        thirdChart.data.datasets[1].data[0].y = ic4.value;
+        //set y of horizontal line
+        thirdChart.data.datasets[6].data[0].y = ic4.value;
+        thirdChart.data.datasets[6].data[1].y = ic4.value;
+        //set y of vertical line
+        thirdChart.data.datasets[7].data[1].y = ic4.value;
+        thirdChart.update();
+
+        if(whatCEBM == 3){
+            f1 = finalChart.data.datasets[0].data[0]. x = ic1.value;
+            f2 = finalChart.data.datasets[0].data[0]. y = ic2.value;
+            f3 = finalChart.data.datasets[1].data[0]. x = ic3.value;
+            f4 = finalChart.data.datasets[1].data[0]. y = ic4.value;
+        }
+        finalChart.update();
+        }
+
 function cebm1ChangeColor(){
     finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(37, 85, 217, 0.6)';
     finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(37, 85, 217, 0.6)';
+    f1 = finalChart.data.datasets[0].data[0]. x = ia1.value;
+    f2 = finalChart.data.datasets[0].data[0]. y = ia2.value;
+    f3 = finalChart.data.datasets[1].data[0]. x = ia3.value;
+    f4 = finalChart.data.datasets[1].data[0]. y = ia4.value;
+    whatCEBM = 1;
     finalChart.update();
 }
 function cebm2ChangeColor(){
     finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(243, 159, 24, 0.6)';
     finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(243, 159, 24, 0.6)';
+    f1 = finalChart.data.datasets[0].data[0]. x = ib1.value;
+    f2 = finalChart.data.datasets[0].data[0]. y = ib2.value;
+    f3 = finalChart.data.datasets[1].data[0]. x = ib3.value;
+    f4 = finalChart.data.datasets[1].data[0]. y = ib4.value;
+    whatCEBM = 2;
     finalChart.update();
 }
 function cebm3ChangeColor(){
     finalChart.options.plugins.quadrantsLeftChart.chartLeft = 'rgba(203, 40, 33, 0.6)';
     finalChart.options.plugins.quadrantsRightChart.chartRight = 'rgba(203, 40, 33, 0.6)';
+    f1 = finalChart.data.datasets[0].data[0]. x = ic1.value;
+    f2 = finalChart.data.datasets[0].data[0]. y = ic2.value;
+    f3 = finalChart.data.datasets[1].data[0]. x = ic3.value;
+    f4 = finalChart.data.datasets[1].data[0]. y = ic4.value;
+    whatCEBM = 3;
     finalChart.update();
 }
+
+cebm1ChangeColor();

@@ -30,14 +30,7 @@
     right: 40px;
   }
 
-  .leftChart-zero {
-    position: absolute;
-    top: 33%;
-    right: 45%;
-    transform: translate(-50%, -50%);
-  }
-
-  .rightChart-zero {
+  .Chart-zero {
     position: absolute;
     top: 33%;
     right: 45%;
@@ -74,20 +67,11 @@
         font-size: 10px;
       }
 
-      .leftChart-zero {
+      .Chart-zero {
         position: absolute;
         top: 28%;
         right: 43%;
         font-size: 13px;
         transform: translate(-50%, -50%);
       }
-
-      .rightChart-zero {
-        position: absolute;
-        top: 28%;
-        right: 43%;
-        font-size: 13px;
-        transform: translate(-50%, -50%);
-      }
-
   }
