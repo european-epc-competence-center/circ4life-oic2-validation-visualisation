@@ -107,6 +107,8 @@
             </div>
         </div>
         <h5>Validation</h5>
+        <div class="row">
+        <div class="col-lg-4">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked onclick="cebm1ChangeColor()">
             <label class="btn btn-outline-primary" for="btnradio1">CEBM A</label>
@@ -116,7 +118,17 @@
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="cebm3ChangeColor()">
             <label class="btn btn-outline-danger" for="btnradio3">CEBM C</label>
-        </div> 
+            </div> 
+        </div>
+        <div class="col-lg-8">
+            <div class="input-group mb-3">
+                <input id="codewordModel" type="text" class="form-control" placeholder="Please enter your codeword" aria-label="Please enter your codeword" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" onclick="this.disabled=true;this.style.backgroundColor='green';onSubmit();" id="submitButton" type="button">Submit</button>
+                </div>
+              </div>
+        </div>
+        </div>
         <div class="col-sm">
             <div class="bottom-left">NOT VALIDATED</div>
             <div class="top-left">PARTIALLY VALIDATED</div>

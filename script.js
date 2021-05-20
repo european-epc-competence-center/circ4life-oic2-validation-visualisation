@@ -766,3 +766,18 @@ function cebm3ChangeColor(){
 }
 
 cebm1ChangeColor();
+
+
+// ************** HIER BEGINNT DIE DATENBANK ANBINDUNG ***************
+
+function onSubmit(){
+    givenTypeModel = document.getElementById('codewordModel').value;
+
+    sendData(makeJsonString(givenTypeModel+'A',ia1.value,ia2.value,ia3.value,ia4.value));
+    sendData(makeJsonString(givenTypeModel+'B',ib1.value,ib2.value,ib3.value,ib4.value));
+    sendData(makeJsonString(givenTypeModel+'C',ic1.value,ic2.value,ic3.value,ic4.value));
+}
+
+function makeJsonString(givenTypeModel,value1,value2,value3,value4){
+    return '{"modelType":"'+givenTypeModel+'","linearToCircular":'+value1+',"innovativeness":'+value2+',"businessPotential":'+value3+',"industryApplicability":'+value4+'}';
+}
