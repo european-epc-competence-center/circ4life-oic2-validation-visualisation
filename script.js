@@ -619,6 +619,54 @@ var finalChart = new Chart(myChart3, {
     plugins: [chartAreaBorder, quadrants, quadrantsLeftChart, quadrantsRightChart]
   });
 
+
+  var radarChart = new Chart(resultChart, {
+    type: 'radar',
+    data: {
+        labels: ["Circularity", "Innovativness", "Business Potential", "Applicability"],
+        datasets: [
+            {
+                label: "CEBM A",
+                backgroundColor: "rgb(0,0,255,0.2)",
+                borderColor: "rgb(0,0,255,1)",
+                pointBackgroundColor: "blue",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "blue",
+                data: [-5, -5, -5, -5]
+            },{
+                label: "CEBM B",
+                backgroundColor: "rgb(255,165,0,0.2)",
+                borderColor: "rgb(255,165,0,1)",
+                pointBackgroundColor: "orange",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "orange",
+                data: [-5, -5, -5, -5]
+            },{
+                label: "CEBM C",
+                backgroundColor: "rgb(255,0,0,0.2)",
+                borderColor: "rgb(255,0,0,1)",
+                pointBackgroundColor: "red",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "red",
+                data: [-5, -5, -5, -5]
+            }
+        ]
+    },
+    options: {
+        tooltips: {
+            mode: 'label'
+        },
+        scale: {
+                min: -5,
+                max: 5,
+                stepsize: 0.01
+}
+}
+});
+
 function changefunctionA(){
 leftChart.data.datasets[0].data[0].x = ia1.value;
 //set x of horizontal line
@@ -770,14 +818,45 @@ cebm1ChangeColor();
 
 // ************** HIER BEGINNT DIE DATENBANK ANBINDUNG ***************
 
-function onSubmit(){
+async function onSubmit(){
     givenTypeModel = document.getElementById('codewordModel').value;
 
     sendData(makeJsonString(givenTypeModel+'A',ia1.value,ia2.value,ia3.value,ia4.value));
     sendData(makeJsonString(givenTypeModel+'B',ib1.value,ib2.value,ib3.value,ib4.value));
-    sendData(makeJsonString(givenTypeModel+'C',ic1.value,ic2.value,ic3.value,ic4.value));
+    sendData(makeJsonString(givenTypeModel+'C',ic1.value,ic2.value,ic3.value,ic4.value)).then(updateRadarChart(givenTypeModel));
 }
 
 function makeJsonString(givenTypeModel,value1,value2,value3,value4){
     return '{"modelType":"'+givenTypeModel+'","linearToCircular":'+value1+',"innovativeness":'+value2+',"businessPotential":'+value3+',"industryApplicability":'+value4+'}';
 }
+
+ 
+
+function updateRadarChart(givenTypeModel){
+    if(givenTypeModel != ''){
+        getAllAverageModels(givenTypeModel+'A',givenTypeModel+'B',givenTypeModel+'C').then(averageData => setRadarChart(averageData));
+    }
+}
+
+function setRadarChart(averageData){
+    console.log(averageData);
+    radarChart.data.datasets[0].data[0] = averageData[0].linearToCircular;
+    radarChart.data.datasets[0].data[1] = averageData[0].innovativeness;
+    radarChart.data.datasets[0].data[2] = averageData[0].businessPotential;
+    radarChart.data.datasets[0].data[3] = averageData[0].industryApplicability;
+
+    radarChart.data.datasets[1].data[0] = averageData[1].linearToCircular;
+    radarChart.data.datasets[1].data[1] = averageData[1].innovativeness;
+    radarChart.data.datasets[1].data[2] = averageData[1].businessPotential;
+    radarChart.data.datasets[1].data[3] = averageData[1].industryApplicability;
+
+    radarChart.data.datasets[2].data[0] = averageData[2].linearToCircular;
+    radarChart.data.datasets[2].data[1] = averageData[2].innovativeness;
+    radarChart.data.datasets[2].data[2] = averageData[2].businessPotential;
+    radarChart.data.datasets[2].data[3] = averageData[2].industryApplicability;
+    radarChart.update();
+}
+
+var intervalId = setInterval(function() {
+    updateRadarChart(document.getElementById('codewordModel').value)
+  }, 5000);
