@@ -820,6 +820,7 @@ cebm1ChangeColor();
 
 async function onSubmit(){
     givenTypeModel = document.getElementById('codewordModel').value;
+    document.getElementById('modelResult').value = givenTypeModel;
 
     sendData(makeJsonString(givenTypeModel+'A',ia1.value,ia2.value,ia3.value,ia4.value));
     sendData(makeJsonString(givenTypeModel+'B',ib1.value,ib2.value,ib3.value,ib4.value));
@@ -858,5 +859,5 @@ function setRadarChart(averageData){
 }
 
 var intervalId = setInterval(function() {
-    updateRadarChart(document.getElementById('codewordModel').value)
+    updateRadarChart(document.getElementById('modelResult').value)
   }, 5000);
