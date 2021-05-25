@@ -822,7 +822,7 @@ async function onSubmit(){
     if (document.getElementById('codewordModel').value === '') {
           console.log("Input empty");
           alert('Please enter your codeword before pressing the submit button');
-          document.getElementById('submitButton').style.backgroundColor='red';
+          document.getElementById('submitButton').style.backgroundColor='#d9534f';
           return;
       }
       console.log("Input valid");
@@ -832,7 +832,7 @@ async function onSubmit(){
     sendData(makeJsonString(givenTypeModel+'A',ia1.value,ia2.value,ia3.value,ia4.value));
     sendData(makeJsonString(givenTypeModel+'B',ib1.value,ib2.value,ib3.value,ib4.value));
     sendData(makeJsonString(givenTypeModel+'C',ic1.value,ic2.value,ic3.value,ic4.value)).then(updateRadarChart(givenTypeModel));
-    document.getElementById('submitButton').style.backgroundColor='green';
+    document.getElementById('submitButton').style.backgroundColor='#5cb85c';
 }
 
 function makeJsonString(givenTypeModel,value1,value2,value3,value4){
