@@ -32,8 +32,8 @@
 
   .Chart-zero {
     position: absolute;
-    top: 33%;
-    right: 45%;
+    top: 21%;
+    right: 44%;
     transform: translate(-50%, -50%);
   }
 
@@ -69,7 +69,7 @@
 
       .Chart-zero {
         position: absolute;
-        top: 28%;
+        top: 19%;
         right: 43%;
         font-size: 13px;
         transform: translate(-50%, -50%);
