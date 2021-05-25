@@ -18,60 +18,129 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="col-sm">
-                <h5>Circularity & Innovativness</h5>
-                <div class="leftChart-zero">0</div>  
+            <div class="col-xl-4">
+                <h5 class="text-primary">CEBM A</h5>
+                <div class="Chart-zero">0</div>  
                 <canvas id="myChart"></canvas>
-                <p>Circularity (<output id="output1"></output>) Innovativness (<output id="output2"></output>)</p>
+                <p>Circularity (<output id="outputA1"></output>) Innovativness (<output id="outputA2"></output>)</p>
+                <p>Business Potential (<output id="outputA3"></output>) Industry Applicability (<output id="outputA4"></output>)</p>
                 <form>
                     <div class="form-group">
                         <span class="font-weight-bold">-5 Linear</span>
                         <span class="font-weight-bold keepRight">Circularity 5</span>
-                        <input id="input1" type="range" min="-5" max="5" step="0.01" class="form-control-range" id="formControlRange" onchange="changefunction()"> 
+                        <input id="inputA1" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionA()"> 
                     </div>
                     <div class="form-group">
                         <span class="font-weight-bold">-5 Business as usual</span>
                         <span class="font-weight-bold keepRight">Innovativness 5</span>
-                        <input id="input2" type="range" min="-5" max="5" step="0.01" class="form-control-range" id="formControlRange" onchange="changefunction2()">
-                      </div>
-                  </form>
-            </div>
-            <div class="col-sm">
-                <h5>Business Potential & Industry Applicability</h5>
-                <div class="rightChart-zero">0</div> 
-                <canvas id="myChart2"></canvas>
-                <p>Business Potential (<output id="output3"></output>) Industry Applicability (<output id="output4"></output>)</p>
-                <form>
+                        <input id="inputA2" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionA()">
+                    </div>
                     <div class="form-group">
                         <span class="font-weight-bold">-5 Low Business Potential</span>
                         <span class="font-weight-bold keepRight">Business Potential 5</span>
-                        <input id="input3" type="range" min="-5" max="5" step="0.01" class="form-control-range" id="formControlRange" onchange="changefunctionRight()">
+                        <input id="inputA3" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionA()">
                     </div>
                     <div class="form-group">
                         <span class="font-weight-bold">-5 Low Applicability</span>
                         <span class="font-weight-bold keepRight">Industry Applicability 5</span>
-                        <input id="input4" type="range" min="-5" max="5" step="0.01" class="form-control-range" id="formControlRange" onchange="changefunctionRight2()">
+                        <input id="inputA4" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionA()">
+                    </div>
+                  </form>
+            </div>
+            <div class="col-xl-4">
+                <h5 class="text-warning">CEBM B</h5>
+                <div class="Chart-zero">0</div> 
+                <canvas id="myChart2"></canvas>
+                <p>Circularity (<output id="outputB1"></output>) Innovativness (<output id="outputB2"></output>)</p>
+                <p>Business Potential (<output id="outputB3"></output>) Industry Applicability (<output id="outputB4"></output>)</p>
+                <form>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Linear</span>
+                        <span class="font-weight-bold keepRight">Circularity 5</span>
+                        <input id="inputB1" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionB()"> 
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Business as usual</span>
+                        <span class="font-weight-bold keepRight">Innovativness 5</span>
+                        <input id="inputB2" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionB()">
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Low Business Potential</span>
+                        <span class="font-weight-bold keepRight">Business Potential 5</span>
+                        <input id="inputB3" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionB()">
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Low Applicability</span>
+                        <span class="font-weight-bold keepRight">Industry Applicability 5</span>
+                        <input id="inputB4" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionB()">
+                      </div>
+                  </form>
+            </div>
+            <div class="col-xl-4">
+                <h5 class="text-danger">CEBM C</h5>
+                <div class="Chart-zero">0</div> 
+                <canvas id="myChart4"></canvas>
+                <p>Circularity (<output id="outputC1"></output>) Innovativness (<output id="outputC2"></output>)</p>
+                <p>Business Potential (<output id="outputC3"></output>) Industry Applicability (<output id="outputC4"></output>)</p>
+                <form>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Linear</span>
+                        <span class="font-weight-bold keepRight">Circularity 5</span>
+                        <input id="inputC1" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionC()"> 
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Business as usual</span>
+                        <span class="font-weight-bold keepRight">Innovativness 5</span>
+                        <input id="inputC2" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionC()">
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Low Business Potential</span>
+                        <span class="font-weight-bold keepRight">Business Potential 5</span>
+                        <input id="inputC3" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionC()">
+                    </div>
+                    <div class="form-group">
+                        <span class="font-weight-bold">-5 Low Applicability</span>
+                        <span class="font-weight-bold keepRight">Industry Applicability 5</span>
+                        <input id="inputC4" type="range" min="-5" max="5" step="1" class="form-control-range" id="formControlRange" onchange="changefunctionC()">
                       </div>
                   </form>
             </div>
         </div>
         <h5>Validation</h5>
+        <div class="row">
+        <div class="col-lg-4">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked onclick="cebm1ChangeColor()">
-            <label class="btn btn-outline-primary" for="btnradio1">CEBM1</label>
+            <label class="btn btn-outline-primary" for="btnradio1">CEBM A</label>
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="cebm2ChangeColor()">
-            <label class="btn btn-outline-warning" for="btnradio2">CEBM2</label>
+            <label class="btn btn-outline-warning" for="btnradio2">CEBM B</label>
           
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="cebm3ChangeColor()">
-            <label class="btn btn-outline-danger" for="btnradio3">CEBM3</label>
-        </div> 
+            <label class="btn btn-outline-danger" for="btnradio3">CEBM C</label>
+            </div> 
+        </div>
+        <div class="col-lg-8">
+            <div class="input-group mb-3">
+                <input id="codewordModel" type="text" class="form-control" placeholder="Please enter your codeword before pressing the submit button" aria-label="Please enter your codeword" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" onclick="onSubmit();" id="submitButton" type="button">Submit</button>
+                </div>
+              </div>
+        </div>
+        </div>
         <div class="col-sm">
             <div class="bottom-left">NOT VALIDATED</div>
             <div class="top-left">PARTIALLY VALIDATED</div>
             <div class="top-right">VALIDATED</div>
             <div class="bottom-right">PARTIALLY VALIDATED</div>
             <canvas id="myChart3"></canvas>
+        </div>
+        <br>
+        <h5>Average result</h5>
+        <div class="col-sm">
+            <input id="modelResult" type="text" class="form-control" placeholder="Please enter your codeword to see the average result" aria-label="Enter your codeword to see average result" aria-describedby="basic-addon2">
+            <canvas id="resultChart"></canvas>
         </div>
     </div>
 </body>

@@ -27,7 +27,7 @@ async function getAllAverageModels(typea,typeb,typec){
 // sends data to database
 // modelData is JSON form inside string
 function sendData(modelData){
-    $.ajax({
+    return $.ajax({
         type: 'POST',
         Headers: {
             'content-Type': 'application/json'
@@ -35,9 +35,8 @@ function sendData(modelData){
         url: 'http://localhost:8080/InsertModel',
         data: JSON.stringify(JSON.parse(modelData)),
         contentType: "application/json",
-        dataType: "json",
-        success: console.log('ok')
-    })
+        dataType: "json"
+        })
 }
 
 // simply tests all functions
