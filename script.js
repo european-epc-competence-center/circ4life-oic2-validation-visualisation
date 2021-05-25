@@ -31,6 +31,8 @@ var dataF34 = [{
     y: 0
 }]
 
+var alreadySent = false;
+
 const chartAreaBorder = {
     id: 'chartAreaBorder',
     beforeDraw(chart, args, options) {
@@ -623,7 +625,7 @@ var finalChart = new Chart(myChart3, {
   var radarChart = new Chart(resultChart, {
     type: 'radar',
     data: {
-        labels: ["Circularity", "Innovativness", "Business Potential", "Applicability"],
+        labels: ["Circularity", "Innovativeness", "Business Potential", "Applicability"],
         datasets: [
             {
                 label: "CEBM A",
@@ -822,9 +824,19 @@ async function onSubmit(){
     if (document.getElementById('codewordModel').value === '') {
           console.log("Input empty");
           alert('Please enter your codeword before pressing the submit button');
-          document.getElementById('submitButton').style.backgroundColor='#d9534f';
+          document.getElementById('submitButton').classList.remove("btn-outline-secondary");
+        document.getElementById('submitButton').classList.add("btn-danger");
           return;
       }
+      if (alreadySent === true) {
+        console.log("Already sent");
+        alert('You have tried to vote again. If you want to vote once more, press the Submit button.');
+        document.getElementById('submitButton').classList.remove("btn-success");
+        document.getElementById('submitButton').classList.remove("btn-danger");
+        document.getElementById('submitButton').classList.add("btn-outline-secondary");
+        alreadySent = false;
+        return;
+    }
       console.log("Input valid");
     givenTypeModel = document.getElementById('codewordModel').value;
     document.getElementById('modelResult').value = givenTypeModel;
@@ -832,7 +844,10 @@ async function onSubmit(){
     sendData(makeJsonString(givenTypeModel+'A',ia1.value,ia2.value,ia3.value,ia4.value));
     sendData(makeJsonString(givenTypeModel+'B',ib1.value,ib2.value,ib3.value,ib4.value));
     sendData(makeJsonString(givenTypeModel+'C',ic1.value,ic2.value,ic3.value,ic4.value)).then(updateRadarChart(givenTypeModel));
-    document.getElementById('submitButton').style.backgroundColor='#5cb85c';
+    document.getElementById('submitButton').classList.remove("btn-outline-secondary");
+    document.getElementById('submitButton').classList.remove("btn-danger");
+    document.getElementById('submitButton').classList.add("btn-success");
+    alreadySent = true;
 }
 
 function makeJsonString(givenTypeModel,value1,value2,value3,value4){
