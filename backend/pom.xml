@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from circ4life.backend.repository -->
     </parent>
     <groupId>circ4life</groupId>
-    <artifactId>backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>Demo project for Spring Boot</description>
+    <artifactId>c4l-oic-evaluation</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>c4l-oic-evaluation</name>
+    <description>CIRC4Life Open Innovation Camp - CEBM Evaluation Tool</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -41,6 +41,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
     </dependencies>
 

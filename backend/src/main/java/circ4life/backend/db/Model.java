@@ -1,4 +1,4 @@
-package circ4life.backend.entities;
+package circ4life.backend.db;
 
 import com.sun.istack.NotNull;
 

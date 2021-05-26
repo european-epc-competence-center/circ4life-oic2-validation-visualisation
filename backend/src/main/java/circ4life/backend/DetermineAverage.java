@@ -1,6 +1,6 @@
-package circ4life.backend.Calculations;
+package circ4life.backend;
 
-import circ4life.backend.entities.Model;
+import circ4life.backend.db.Model;
 
 import java.util.List;
 

@@ -1,8 +1,7 @@
-package circ4life.backend.controller;
+package circ4life.backend;
 
-import circ4life.backend.Calculations.DetermineAverage;
-import circ4life.backend.entities.Model;
-import circ4life.backend.repository.ModelRepository;
+import circ4life.backend.db.Model;
+import circ4life.backend.db.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +25,15 @@ public class ModelController {
     )
     public List<Model> getAllData() {
         return modelRepository.findAll();
+    }
+
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            path = "/model",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public void deleteAllData() {
+        modelRepository.deleteAll();
     }
 
     @RequestMapping(
@@ -66,7 +74,7 @@ public class ModelController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public List<Model> getDataByAllModelType(@PathVariable String typeA, @PathVariable String typeB, @PathVariable String typeC) {
-        List<Model> averageAllTypes = new ArrayList<Model>();
+        List<Model> averageAllTypes = new ArrayList<>();
         averageAllTypes.add(getDataByOneModelType(typeA));
         averageAllTypes.add(getDataByOneModelType(typeB));
         averageAllTypes.add(getDataByOneModelType(typeC));

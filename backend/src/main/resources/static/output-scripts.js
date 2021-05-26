@@ -1,18 +1,3 @@
-var dataF12 = [{
-  x: 0,
-  y: 0
-}];
-
-var dataF34 = [{
-  x: 0,
-  y: 0
-}];
-
-f1 = 0;
-f2 = 0;
-f3 = 0;
-f4 = 0;
-
 const chartAreaBorder = {
   id: 'chartAreaBorder',
   beforeDraw(chart, args, options) {
@@ -85,8 +70,8 @@ const quadrantsFirstChart = {
     const midX = x.getPixelForValue(0);
     const midY = y.getPixelForValue(0);
     ctx.save();
-    ctx.fillStyle = options.firstChartColor;
-    ctx.fillRect(midX, midY, f1 * midX / 5.1, -(f2 * midY / 5.2));
+    ctx.fillStyle = options.color;
+    ctx.fillRect(midX, midY, options.v1 * midX / 5, -(options.v2 * midY / 5));
   }
 };
 
@@ -109,8 +94,8 @@ const quadrantsSecondChart = {
     const midX = x.getPixelForValue(0);
     const midY = y.getPixelForValue(0);
     ctx.save();
-    ctx.fillStyle = options.secondChartColor;
-    ctx.fillRect(midX, midY, f3 * midX / 5.1, -(f4 * midY / 5.2));
+    ctx.fillStyle = options.color;
+    ctx.fillRect(midX, midY, options.v1 * midX / 5, -(options.v1 * midY / 5));
   }
 };
 
@@ -124,19 +109,25 @@ for (let i = 1; i < 4; i++) {
     data: {
       datasets: [{
           label: "Point1",
-          data: dataF12,
+          data: [{
+            x: 0,
+            y: 0
+          }],
           backgroundColor: [
             '#292b2c'
           ],
-          pointRadius: 10
+          pointRadius: 5
         },
         {
           label: "Point2",
-          data: dataF34,
+          data: [{
+            x: 0,
+            y: 0
+          }],
           backgroundColor: [
             '#292b2c'
           ],
-          pointRadius: 10
+          pointRadius: 5
         },
         {
           type: 'line',
@@ -183,10 +174,14 @@ for (let i = 1; i < 4; i++) {
           bottomRight: '#e5e5e5'
         },
         quadrantsFirstChart: {
-          firstChartColor: 'rgba(37, 85, 217, 0.6)'
+          color: 'rgba(37, 85, 217, 0.6)',
+          v1: 0,
+          v2: 0
         },
         quadrantsSecondChart: {
-          secondChartColor: 'rgba(37, 85, 217, 0.6)'
+          color: 'rgba(37, 85, 217, 0.6)',
+          v1: 0,
+          v2: 0
         }
       },
       responsive: true,
@@ -206,17 +201,17 @@ for (let i = 1; i < 4; i++) {
     plugins: [chartAreaBorder, quadrants, quadrantsFirstChart, quadrantsSecondChart]
   });
 }
-charts[0].options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(37, 85, 217, 0.6)';
-charts[0].options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(37, 85, 217, 0.6)';
+charts[0].options.plugins.quadrantsFirstChart.color = 'rgba(37, 85, 217, 0.6)';
+charts[0].options.plugins.quadrantsSecondChart.color = 'rgba(37, 85, 217, 0.6)';
 charts[0].update();
 
 
-charts[1].options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(243, 159, 24, 0.6)';
-charts[1].options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(243, 159, 24, 0.6)';
+charts[1].options.plugins.quadrantsFirstChart.color = 'rgba(243, 159, 24, 0.6)';
+charts[1].options.plugins.quadrantsSecondChart.color = 'rgba(243, 159, 24, 0.6)';
 charts[1].update();
 
-charts[2].options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(203, 40, 33, 0.6)';
-charts[2].options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(203, 40, 33, 0.6)';
+charts[2].options.plugins.quadrantsFirstChart.color = 'rgba(203, 40, 33, 0.6)';
+charts[2].options.plugins.quadrantsSecondChart.color = 'rgba(203, 40, 33, 0.6)';
 charts[2].update();
 
 
@@ -275,7 +270,7 @@ function updateCharts() {
 }
 
 function setCharts(averageData) {
-  console.log(averageData);
+//  console.log(averageData);
 
   for (let i = 0; i < 3; i++) {
     radarChart.data.datasets[i].data[0] = averageData[i].linearToCircular;
@@ -283,10 +278,11 @@ function setCharts(averageData) {
     radarChart.data.datasets[i].data[2] = averageData[i].businessPotential;
     radarChart.data.datasets[i].data[3] = averageData[i].industryApplicability;
 
-    f1 = charts[i].data.datasets[0].data[0].x = averageData[i].linearToCircular;
-    f2 = charts[i].data.datasets[0].data[0].y = averageData[i].innovativeness;
-    f3 = charts[i].data.datasets[1].data[0].x = averageData[i].businessPotential;
-    f4 = charts[i].data.datasets[1].data[0].y = averageData[i].industryApplicability;
+
+    charts[i].options.plugins.quadrantsFirstChart.v1 = charts[i].data.datasets[0].data[0].x = averageData[i].linearToCircular;
+    charts[i].options.plugins.quadrantsFirstChart.v2 = charts[i].data.datasets[0].data[0].y = averageData[i].innovativeness;
+    charts[i].options.plugins.quadrantsSecondChart.v1 = charts[i].data.datasets[1].data[0].x = averageData[i].businessPotential;
+    charts[i].options.plugins.quadrantsSecondChart.v2 = charts[i].data.datasets[1].data[0].y = averageData[i].industryApplicability;
     charts[i].update();
   }
   radarChart.update();
