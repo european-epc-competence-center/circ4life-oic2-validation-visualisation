@@ -71,7 +71,7 @@ const quadrantsFirstChart = {
     const midY = y.getPixelForValue(0);
     ctx.save();
     ctx.fillStyle = options.color;
-    ctx.fillRect(midX, midY, options.v1 * midX / 5, -(options.v2 * midY / 5));
+    ctx.fillRect(midX, midY, options.v1 * midX / 5.1, -(options.v2 * midY / 5.1));
   }
 };
 
@@ -95,7 +95,7 @@ const quadrantsSecondChart = {
     const midY = y.getPixelForValue(0);
     ctx.save();
     ctx.fillStyle = options.color;
-    ctx.fillRect(midX, midY, options.v1 * midX / 5, -(options.v1 * midY / 5));
+    ctx.fillRect(midX, midY, options.v1 * midX / 5.1, -(options.v2 * midY / 5.1));
   }
 };
 

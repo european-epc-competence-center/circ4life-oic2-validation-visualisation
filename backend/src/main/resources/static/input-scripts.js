@@ -621,9 +621,9 @@ async function onSubmit() {
   document.getElementById('submitButton').classList.add("btn-success");
   document.getElementById('submitButton').disabled = true;
 
-  sendData(makeJsonString(givenTypeModel + 'A', ia1.value, ia2.value, ia3.value, ia4.value));
-  sendData(makeJsonString(givenTypeModel + 'B', ib1.value, ib2.value, ib3.value, ib4.value));
-  sendData(makeJsonString(givenTypeModel + 'C', ic1.value, ic2.value, ic3.value, ic4.value));
+  await sendData(makeJsonString(givenTypeModel + 'A', ia1.value, ia2.value, ia3.value, ia4.value));
+  await sendData(makeJsonString(givenTypeModel + 'B', ib1.value, ib2.value, ib3.value, ib4.value));
+  await sendData(makeJsonString(givenTypeModel + 'C', ic1.value, ic2.value, ic3.value, ic4.value));
   window.location.href = 'results.html';
 }
 

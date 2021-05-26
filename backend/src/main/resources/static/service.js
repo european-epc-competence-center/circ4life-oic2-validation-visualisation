@@ -30,6 +30,8 @@ async function getAllAverageModels(typea, typeb, typec) {
 // sends data to database
 // modelData is JSON form inside string
 function sendData(modelData) {
+  console.log("posting " + modelData);
+
   return $.ajax({
     type: 'POST',
     Headers: {
