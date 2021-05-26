@@ -1,9 +1,7 @@
 package circ4life.backend.Calculations;
 
 import circ4life.backend.entities.Model;
-import com.sun.istack.NotNull;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class DetermineAverage {
@@ -26,12 +24,12 @@ public class DetermineAverage {
     }
 
     // returns Double Array with average values from the Modellist
-    private Double[] getAverage(List<Model> models){
+    private Double[] getAverage(List<Model> models) {
         int i = 0;
-        double averageLinear,averageInnovative,averageBusiness,averageApplicability;
+        double averageLinear, averageInnovative, averageBusiness, averageApplicability;
         averageLinear = averageInnovative = averageBusiness = averageApplicability = 0;
         for (Model model : models) {
-            if(checkNotNull(model)) {
+            if (checkNotNull(model)) {
                 averageLinear += model.getLinearToCircular();
                 averageInnovative += model.getInnovativeness();
                 averageBusiness += model.getBusinessPotential();
@@ -39,16 +37,19 @@ public class DetermineAverage {
                 i++;
             }
         }
-        if(i != 0) {
+        if (i != 0) {
             return new Double[]{averageLinear / i, averageInnovative / i, averageBusiness / i, averageApplicability / i};
-        }else{return new Double[]{0.0,0.0,0.0,0.0};}
+        } else {
+            return new Double[]{0.0, 0.0, 0.0, 0.0};
+        }
     }
 
     // returns true if current Model does not have any NullPointer. Else false
-    private Boolean checkNotNull(Model model){
-        if(model.getLinearToCircular() != null && model.getInnovativeness() != null && model.getBusinessPotential() != null && model.getIndustryApplicability() != null){
-            return true;
-        }else{return false;}
+    private Boolean checkNotNull(Model model) {
+        return model.getLinearToCircular() != null
+                && model.getInnovativeness() != null
+                && model.getBusinessPotential() != null
+                && model.getIndustryApplicability() != null;
     }
 
 }
