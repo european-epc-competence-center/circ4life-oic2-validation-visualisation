@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### project specific
+data/dataStorage.mv.db

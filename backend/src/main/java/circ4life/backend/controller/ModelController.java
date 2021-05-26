@@ -2,10 +2,10 @@ package circ4life.backend.controller;
 
 import circ4life.backend.Calculations.DetermineAverage;
 import circ4life.backend.entities.Model;
+import circ4life.backend.repository.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import circ4life.backend.repository.ModelRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class ModelController {
             path = "/model",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Model> getAllData(){
+    public List<Model> getAllData() {
         return modelRepository.findAll();
     }
 
@@ -32,7 +32,7 @@ public class ModelController {
             path = "/modelId/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Optional<Model> getDataById(@PathVariable Integer id){
+    public Optional<Model> getDataById(@PathVariable Integer id) {
         return modelRepository.findById(id);
     }
 
@@ -41,7 +41,7 @@ public class ModelController {
             path = "/modelType/{typeOfModel}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Model> getDataByModelType(@PathVariable String typeOfModel){
+    public List<Model> getDataByModelType(@PathVariable String typeOfModel) {
         return modelRepository.findByModelType(typeOfModel);
     }
 
@@ -50,12 +50,13 @@ public class ModelController {
             path = "/modelOneTypeAverage/{type}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Model getDataByOneModelType(@PathVariable String type){
+    public Model getDataByOneModelType(@PathVariable String type) {
         DetermineAverage determineAverage = new DetermineAverage();
-        if(!modelRepository.findByModelType(type).isEmpty()) {
+        if (!modelRepository.findByModelType(type).isEmpty()) {
             return determineAverage.createAverageModel(modelRepository.findByModelType(type));
-        }else{return new Model("Model Type does not exist yet",0.0,0.0,0.0,0.0);}
-
+        } else {
+            return new Model("Model Type does not exist yet", 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     @RequestMapping(
@@ -63,7 +64,7 @@ public class ModelController {
             path = "/modelAllTypeAverage/{typeA}/{typeB}/{typeC}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public List<Model> getDataByAllModelType(@PathVariable String typeA, @PathVariable String typeB, @PathVariable String typeC){
+    public List<Model> getDataByAllModelType(@PathVariable String typeA, @PathVariable String typeB, @PathVariable String typeC) {
         List<Model> averageAllTypes = new ArrayList<Model>();
         averageAllTypes.add(getDataByOneModelType(typeA));
         averageAllTypes.add(getDataByOneModelType(typeB));
@@ -75,8 +76,9 @@ public class ModelController {
     @RequestMapping(
             method = RequestMethod.POST,
             path = "/InsertModel")
-    public Model setData(@RequestBody Model newData){ modelRepository.save(newData);
-         return newData;
+    public Model setData(@RequestBody Model newData) {
+        modelRepository.save(newData);
+        return newData;
     }
 
 }
