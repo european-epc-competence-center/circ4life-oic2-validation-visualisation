@@ -41,11 +41,3 @@ function sendData(modelData) {
     dataType: "json"
   })
 }
-
-// simply tests all functions
-function testFunction() {
-  sendData('{"modelType":"CEBMA","linearToCircular":23,"innovativeness":1,"businessPotential":132,"industryApplicability":123}');
-  getAllModels().then(data => console.log(data));
-  getOneAverageModel('CEBMA').then(data => console.log(data));
-  getAllAverageModels('CEBMA', 'notthere', 'CEBMA').then(data => console.log(data));
-}

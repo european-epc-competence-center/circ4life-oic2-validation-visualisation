@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIRC4Life Open Innovation Camp 2: CEBM Evaluation Tool - Results</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link href="styles.css" rel="stylesheet">
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="chart.min.js"></script>
+  <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3 class="text-center m-3">Average Evaluation Results</h3>
+    <div class="row my-xl-3">
+      <div class="col-xl-4">
+        <div class="bottom-left text-uppercase">Invalid</div>
+        <div class="top-left text-uppercase">Partially Valid</div>
+        <div class="top-right text-uppercase">Valid</div>
+        <div class="bottom-right text-uppercase">Partially Valid</div>
+        <h5 class="mx-auto text-center">CEBM A</h5>
+        <canvas id="resultChart1" class="mb-5"></canvas>
+      </div>
+      <div class="col-xl-4">
+        <div class="bottom-left text-uppercase">Invalid</div>
+        <div class="top-left text-uppercase">Partially Valid</div>
+        <div class="top-right text-uppercase">Valid</div>
+        <div class="bottom-right text-uppercase">Partially Valid</div>
+        <h5 class="mx-auto text-center">CEBM B</h5>
+        <canvas id="resultChart2"></canvas>
+      </div>
+      <div class="col-xl-4">
+        <div class="bottom-left text-uppercase">Invalid</div>
+        <div class="top-left text-uppercase">Partially Valid</div>
+        <div class="top-right text-uppercase">Valid</div>
+        <div class="bottom-right text-uppercase">Partially Valid</div>
+        <h5 class="mx-auto text-center">CEBM C</h5>
+        <canvas id="resultChart3"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3">
+      </div>
+      <div class="col-xl-6">
+        <canvas id="radarChart"></canvas>
+      </div>
+      <div class="col-xl-3">
+      </div>
+    </div>
+  </div>
+  <script src="service.js"></script>
+  <script src="output-scripts.js" defer></script>
+</body>
+
+</html>

@@ -22,16 +22,6 @@ var dataC34 = [{
   x: 0,
   y: 0
 }]
-var dataF12 = [{
-  x: 0,
-  y: 0
-}]
-var dataF34 = [{
-  x: 0,
-  y: 0
-}]
-
-var alreadySent = false;
 
 const chartAreaBorder = {
   id: 'chartAreaBorder',
@@ -166,59 +156,6 @@ ic4.addEventListener('input', function() {
   oc4.innerHTML = ic4.value;
 }, false);
 
-f1 = ia1.value;
-f2 = ia2.value;
-f3 = ia3.value;
-f4 = ia4.value;
-whatCEBM = 1;
-
-const quadrantsFirstChart = {
-  id: 'quadrantsFirstChart',
-  beforeDraw(chart, args, options) {
-    const {
-      ctx,
-      chartArea: {
-        left,
-        top,
-        right,
-        bottom
-      },
-      scales: {
-        x,
-        y
-      }
-    } = chart;
-    const midX = x.getPixelForValue(0);
-    const midY = y.getPixelForValue(0);
-    ctx.save();
-    ctx.fillStyle = options.firstChartColor;
-    ctx.fillRect(midX, midY, f1 * midX / 5.1, -(f2 * midY / 5.2));
-  }
-};
-
-const quadrantsSecondChart = {
-  id: 'quadrantsSecondChart',
-  beforeDraw(chart, args, options) {
-    const {
-      ctx,
-      chartArea: {
-        left,
-        top,
-        right,
-        bottom
-      },
-      scales: {
-        x,
-        y
-      }
-    } = chart;
-    const midX = x.getPixelForValue(0);
-    const midY = y.getPixelForValue(0);
-    ctx.save();
-    ctx.fillStyle = options.secondChartColor;
-    ctx.fillRect(midX, midY, f3 * midX / 5.1, -(f4 * midY / 5.2));
-  }
-};
 
 var fristChart = new Chart(myChart, {
   type: 'scatter',
@@ -581,139 +518,6 @@ var thirdChart = new Chart(myChart4, {
   }
 });
 
-var finalChart = new Chart(myChart3, {
-  type: 'scatter',
-  data: {
-    datasets: [{
-        label: "Point1",
-        data: dataF12,
-        backgroundColor: [
-          '#292b2c'
-        ],
-        pointRadius: 10
-      },
-      {
-        label: "Point2",
-        data: dataF34,
-        backgroundColor: [
-          '#292b2c'
-        ],
-        pointRadius: 10
-      },
-      {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 5
-        }, {
-          x: 0,
-          y: -5
-        }],
-        fill: false,
-        borderColor: 'black',
-        pointRadius: 0
-      },
-      {
-        type: 'line',
-        data: [{
-          x: -5,
-          y: 0
-        }, {
-          x: 5,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'black',
-        pointRadius: 0,
-      },
-    ]
-  },
-  options: {
-    plugins: {
-      legend: {
-        display: false
-      },
-      chartAreaBorder: {
-        borderColor: 'black',
-        borderWidth: 2,
-        borderDash: [5, 5]
-      },
-      quadrants: {
-        topLeft: '#e5e5e5',
-        topRight: '#99cc99',
-        bottomLeft: '#FF9999',
-        bottomRight: '#e5e5e5'
-      },
-      quadrantsFirstChart: {
-        firstChartColor: 'rgba(37, 85, 217, 0.6)'
-      },
-      quadrantsSecondChart: {
-        secondChartColor: 'rgba(37, 85, 217, 0.6)'
-      }
-    },
-    responsive: true,
-    scales: {
-      y: {
-        min: -5,
-        max: 5,
-        display: false
-      },
-      x: {
-        min: -5,
-        max: 5,
-        display: false
-      }
-    }
-  },
-  plugins: [chartAreaBorder, quadrants, quadrantsFirstChart, quadrantsSecondChart]
-});
-
-
-var radarChart = new Chart(resultChart, {
-  type: 'radar',
-  data: {
-    labels: ["Circularity", "Innovativeness", "Business Potential", "Applicability"],
-    datasets: [{
-      label: "CEBM A",
-      backgroundColor: "rgb(0,0,255,0.2)",
-      borderColor: "rgb(0,0,255,1)",
-      pointBackgroundColor: "blue",
-      pointBorderColor: "#fff",
-      pointHoverBackgroundColor: "#fff",
-      pointHoverBorderColor: "blue",
-      data: [-5, -5, -5, -5]
-    }, {
-      label: "CEBM B",
-      backgroundColor: "rgb(255,165,0,0.2)",
-      borderColor: "rgb(255,165,0,1)",
-      pointBackgroundColor: "orange",
-      pointBorderColor: "#fff",
-      pointHoverBackgroundColor: "#fff",
-      pointHoverBorderColor: "orange",
-      data: [-5, -5, -5, -5]
-    }, {
-      label: "CEBM C",
-      backgroundColor: "rgb(255,0,0,0.2)",
-      borderColor: "rgb(255,0,0,1)",
-      pointBackgroundColor: "red",
-      pointBorderColor: "#fff",
-      pointHoverBackgroundColor: "#fff",
-      pointHoverBorderColor: "red",
-      data: [-5, -5, -5, -5]
-    }]
-  },
-  options: {
-    tooltips: {
-      mode: 'label'
-    },
-    scale: {
-      min: -5,
-      max: 5,
-      stepsize: 0.01
-    }
-  }
-});
-
 function changefunctionA() {
   fristChart.data.datasets[0].data[0].x = ia1.value;
   //set x of horizontal line
@@ -743,13 +547,6 @@ function changefunctionA() {
   //set y of vertical line
   fristChart.data.datasets[7].data[1].y = ia4.value;
   fristChart.update();
-  if (whatCEBM == 1) {
-    f1 = finalChart.data.datasets[0].data[0].x = ia1.value;
-    f2 = finalChart.data.datasets[0].data[0].y = ia2.value;
-    f3 = finalChart.data.datasets[1].data[0].x = ia3.value;
-    f4 = finalChart.data.datasets[1].data[0].y = ia4.value;
-  }
-  finalChart.update();
 }
 
 function changefunctionB() {
@@ -781,13 +578,7 @@ function changefunctionB() {
   //set y of vertical line
   secondChart.data.datasets[7].data[1].y = ib4.value;
   secondChart.update();
-  if (whatCEBM == 2) {
-    f1 = finalChart.data.datasets[0].data[0].x = ib1.value;
-    f2 = finalChart.data.datasets[0].data[0].y = ib2.value;
-    f3 = finalChart.data.datasets[1].data[0].x = ib3.value;
-    f4 = finalChart.data.datasets[1].data[0].y = ib4.value;
-  }
-  finalChart.update();
+
 }
 
 function changefunctionC() {
@@ -820,114 +611,22 @@ function changefunctionC() {
   thirdChart.data.datasets[7].data[1].y = ic4.value;
   thirdChart.update();
 
-  if (whatCEBM == 3) {
-    f1 = finalChart.data.datasets[0].data[0].x = ic1.value;
-    f2 = finalChart.data.datasets[0].data[0].y = ic2.value;
-    f3 = finalChart.data.datasets[1].data[0].x = ic3.value;
-    f4 = finalChart.data.datasets[1].data[0].y = ic4.value;
-  }
-  finalChart.update();
 }
-
-function cebm1ChangeColor() {
-  finalChart.options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(37, 85, 217, 0.6)';
-  finalChart.options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(37, 85, 217, 0.6)';
-  f1 = finalChart.data.datasets[0].data[0].x = ia1.value;
-  f2 = finalChart.data.datasets[0].data[0].y = ia2.value;
-  f3 = finalChart.data.datasets[1].data[0].x = ia3.value;
-  f4 = finalChart.data.datasets[1].data[0].y = ia4.value;
-  whatCEBM = 1;
-  finalChart.update();
-}
-
-function cebm2ChangeColor() {
-  finalChart.options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(243, 159, 24, 0.6)';
-  finalChart.options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(243, 159, 24, 0.6)';
-  f1 = finalChart.data.datasets[0].data[0].x = ib1.value;
-  f2 = finalChart.data.datasets[0].data[0].y = ib2.value;
-  f3 = finalChart.data.datasets[1].data[0].x = ib3.value;
-  f4 = finalChart.data.datasets[1].data[0].y = ib4.value;
-  whatCEBM = 2;
-  finalChart.update();
-}
-
-function cebm3ChangeColor() {
-  finalChart.options.plugins.quadrantsFirstChart.firstChartColor = 'rgba(203, 40, 33, 0.6)';
-  finalChart.options.plugins.quadrantsSecondChart.secondChartColor = 'rgba(203, 40, 33, 0.6)';
-  f1 = finalChart.data.datasets[0].data[0].x = ic1.value;
-  f2 = finalChart.data.datasets[0].data[0].y = ic2.value;
-  f3 = finalChart.data.datasets[1].data[0].x = ic3.value;
-  f4 = finalChart.data.datasets[1].data[0].y = ic4.value;
-  whatCEBM = 3;
-  finalChart.update();
-}
-
-cebm1ChangeColor();
-
 
 // ************** THE DATABASE CONNECTION STARTS HERE ***************
 
 async function onSubmit() {
-  if (document.getElementById('codewordModel').value === '') {
-    console.log("Input empty");
-    alert('Please enter your codeword before pressing the submit button');
-    document.getElementById('submitButton').classList.remove("btn-outline-secondary");
-    document.getElementById('submitButton').classList.add("btn-danger");
-    return;
-  }
-  if (alreadySent === true) {
-    console.log("Already sent");
-    alert('You have tried to vote again. If you want to vote once more, press the Submit button.');
-    document.getElementById('submitButton').classList.remove("btn-success");
-    document.getElementById('submitButton').classList.remove("btn-danger");
-    document.getElementById('submitButton').classList.add("btn-outline-secondary");
-    alreadySent = false;
-    return;
-  }
-  console.log("Input valid");
-  givenTypeModel = document.getElementById('codewordModel').value;
-  document.getElementById('modelResult').value = givenTypeModel;
+  console.log("Sending...");
+  givenTypeModel = "CEBM";
+  document.getElementById('submitButton').classList.add("btn-success");
+  document.getElementById('submitButton').disabled = true;
 
   sendData(makeJsonString(givenTypeModel + 'A', ia1.value, ia2.value, ia3.value, ia4.value));
   sendData(makeJsonString(givenTypeModel + 'B', ib1.value, ib2.value, ib3.value, ib4.value));
-  sendData(makeJsonString(givenTypeModel + 'C', ic1.value, ic2.value, ic3.value, ic4.value)).then(updateRadarChart(givenTypeModel));
-  document.getElementById('submitButton').classList.remove("btn-outline-secondary");
-  document.getElementById('submitButton').classList.remove("btn-danger");
-  document.getElementById('submitButton').classList.add("btn-success");
-  alreadySent = true;
+  sendData(makeJsonString(givenTypeModel + 'C', ic1.value, ic2.value, ic3.value, ic4.value));
+  window.location.href = 'results.html';
 }
 
 function makeJsonString(givenTypeModel, value1, value2, value3, value4) {
   return '{"modelType":"' + givenTypeModel + '","linearToCircular":' + value1 + ',"innovativeness":' + value2 + ',"businessPotential":' + value3 + ',"industryApplicability":' + value4 + '}';
 }
-
-
-
-function updateRadarChart(givenTypeModel) {
-  if (givenTypeModel != '') {
-    getAllAverageModels(givenTypeModel + 'A', givenTypeModel + 'B', givenTypeModel + 'C').then(averageData => setRadarChart(averageData));
-  }
-}
-
-function setRadarChart(averageData) {
-  console.log(averageData);
-  radarChart.data.datasets[0].data[0] = averageData[0].linearToCircular;
-  radarChart.data.datasets[0].data[1] = averageData[0].innovativeness;
-  radarChart.data.datasets[0].data[2] = averageData[0].businessPotential;
-  radarChart.data.datasets[0].data[3] = averageData[0].industryApplicability;
-
-  radarChart.data.datasets[1].data[0] = averageData[1].linearToCircular;
-  radarChart.data.datasets[1].data[1] = averageData[1].innovativeness;
-  radarChart.data.datasets[1].data[2] = averageData[1].businessPotential;
-  radarChart.data.datasets[1].data[3] = averageData[1].industryApplicability;
-
-  radarChart.data.datasets[2].data[0] = averageData[2].linearToCircular;
-  radarChart.data.datasets[2].data[1] = averageData[2].innovativeness;
-  radarChart.data.datasets[2].data[2] = averageData[2].businessPotential;
-  radarChart.data.datasets[2].data[3] = averageData[2].industryApplicability;
-  radarChart.update();
-}
-
-var intervalId = setInterval(function() {
-  updateRadarChart(document.getElementById('modelResult').value)
-}, 5000);

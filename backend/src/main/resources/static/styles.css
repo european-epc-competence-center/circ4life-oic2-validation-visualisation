@@ -1,77 +1,76 @@
-.keepRight{
-    float: right !important;
+.keepRight {
+  float: right !important;
 }
 
 * {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+.top-left {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
+
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 20px;
+  left: 46px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+}
+
+.Chart-zero {
+  position: absolute;
+  top: 21%;
+  right: 44%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 767px) {
+  .bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 10px;
   }
 
   .top-left {
     position: absolute;
     top: 20px;
     left: 40px;
+    font-size: 10px;
   }
 
   .top-right {
     position: absolute;
     top: 20px;
     right: 40px;
+    font-size: 10px;
   }
 
   .bottom-left {
     position: absolute;
     bottom: 20px;
     left: 46px;
-  }
-
-  .bottom-right {
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
+    font-size: 10px;
   }
 
   .Chart-zero {
     position: absolute;
-    top: 21%;
-    right: 44%;
+    top: 19%;
+    right: 43%;
+    font-size: 13px;
     transform: translate(-50%, -50%);
   }
-
-  @media only screen and (max-width: 767px) { 
-
-    .bottom-right {
-        position: absolute;
-        bottom: 20px;
-        right: 40px;
-        font-size: 10px;
-      }
-
-      .top-left {
-        position: absolute;
-        top: 20px;
-        left: 40px;
-        font-size: 10px;
-      }
-    
-      .top-right {
-        position: absolute;
-        top: 20px;
-        right: 40px;
-        font-size: 10px;
-      }
-    
-      .bottom-left {
-        position: absolute;
-        bottom: 20px;
-        left: 46px;
-        font-size: 10px;
-      }
-
-      .Chart-zero {
-        position: absolute;
-        top: 19%;
-        right: 43%;
-        font-size: 13px;
-        transform: translate(-50%, -50%);
-      }
-  }
+}
