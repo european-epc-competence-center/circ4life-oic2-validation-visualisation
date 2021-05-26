@@ -1,8 +1,11 @@
+BASE_URL = "https://circ4life.eecc.info/evaluation";
+
+
 // get all Models from database
 async function getAllModels() {
   return $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/model',
+    url: BASE_URL + '/model',
   });
 }
 
@@ -11,7 +14,7 @@ async function getAllModels() {
 async function getOneAverageModel(type) {
   return $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/modelOneTypeAverage/' + type
+    url: BASE_URL + '/modelOneTypeAverage/' + type
   })
 }
 
@@ -20,7 +23,7 @@ async function getOneAverageModel(type) {
 async function getAllAverageModels(typea, typeb, typec) {
   return $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/modelAllTypeAverage/' + typea + '/' + typeb + '/' + typec
+    url: BASE_URL + '/modelAllTypeAverage/' + typea + '/' + typeb + '/' + typec
   })
 }
 
@@ -32,7 +35,7 @@ function sendData(modelData) {
     Headers: {
       'content-Type': 'application/json'
     },
-    url: 'http://localhost:8080/InsertModel',
+    url: BASE_URL + '/InsertModel',
     data: JSON.stringify(JSON.parse(modelData)),
     contentType: "application/json",
     dataType: "json"

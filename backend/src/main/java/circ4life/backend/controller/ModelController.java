@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/evaluation")
 public class ModelController {
 
     @Autowired
