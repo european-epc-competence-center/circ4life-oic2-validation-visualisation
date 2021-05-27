@@ -157,105 +157,102 @@ ic4.addEventListener('input', function() {
 }, false);
 
 
+function auxilliary_datasets(color) {
+  return [{
+      type: 'line',
+      data: [{
+        x: 0,
+        y: 5
+      }],
+      fill: false,
+      borderColor: 'black',
+      borderWidth: 1,
+      pointRadius: 0
+    },
+    {
+      type: 'line',
+      data: [{
+        x: 5,
+        y: 0
+      }],
+      fill: false,
+      borderColor: 'black',
+      borderWidth: 1,
+      pointRadius: 0
+    }, {
+      type: 'line',
+      data: [{
+        x: 0,
+        y: 0
+      }, {
+        x: 0,
+        y: 0
+      }],
+      fill: false,
+      borderColor: color,
+      borderWidth: 1,
+      pointRadius: 0
+    }, {
+      type: 'line',
+      data: [{
+        x: 0,
+        y: 0
+      }, {
+        x: 0,
+        y: 0
+      }],
+      fill: false,
+      borderColor: color,
+      borderWidth: 1,
+      pointRadius: 0
+    }, {
+      type: 'line',
+      data: [{
+        x: 0,
+        y: 0
+      }, {
+        x: 0,
+        y: 0
+      }],
+      fill: false,
+      borderColor: color,
+      borderWidth: 1,
+      pointRadius: 0
+    }, {
+      type: 'line',
+      data: [{
+        x: 0,
+        y: 0
+      }, {
+        x: 0,
+        y: 0
+      }],
+      fill: false,
+      borderColor: color,
+      borderWidth: 1,
+      pointRadius: 0
+    }
+  ]
+}
+
 var fristChart = new Chart(myChart, {
   type: 'scatter',
   data: {
     datasets: [{
-        label: "dataA12Chart",
-        data: dataA12,
-        backgroundColor: [
-          'rgba(30, 144, 255, 0.6)',
-        ],
-        pointRadius: 5
-      }, {
-        label: "dataA34Chart",
-        data: dataA34,
-        backgroundColor: [
-          'rgba(30, 144, 255, 0.6)',
-        ],
-        pointRadius: 5
-      },
-      {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 5
-        }, {
-          x: 0,
-          y: -5
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      },
-      {
-        type: 'line',
-        data: [{
-          x: -5,
-          y: 0
-        }, {
-          x: 5,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'blue',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'blue',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'blue',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'blue',
-        borderWidth: 1,
-        pointRadius: 0
-      }
-    ]
+      label: "dataA12Chart",
+      data: dataA12,
+      backgroundColor: [
+        'rgba(30, 144, 255, 0.6)',
+      ],
+      pointRadius: 5
+    }, {
+      label: "dataA34Chart",
+      data: dataA34,
+      backgroundColor: [
+        'rgba(30, 144, 255, 0.6)',
+      ],
+      pointRadius: 5
+    }].concat(auxilliary_datasets('blue'))
   },
   options: {
     plugins: {
@@ -266,11 +263,11 @@ var fristChart = new Chart(myChart, {
     responsive: true,
     scales: {
       y: {
-        min: -5,
+        min: 0,
         max: 5
       },
       x: {
-        min: -5,
+        min: 0,
         max: 5
       }
     }
@@ -281,101 +278,20 @@ var secondChart = new Chart(myChart2, {
   type: 'scatter',
   data: {
     datasets: [{
-        label: "dataB12Chart",
-        data: dataB12,
-        backgroundColor: [
-          'orange',
-        ],
-        pointRadius: 5
-      }, {
-        label: "dataB34Chart",
-        data: dataB34,
-        backgroundColor: [
-          'orange',
-        ],
-        pointRadius: 5
-      },
-      {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 5
-        }, {
-          x: 0,
-          y: -5
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      },
-      {
-        type: 'line',
-        data: [{
-          x: -5,
-          y: 0
-        }, {
-          x: 5,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'orange',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'orange',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'orange',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'orange',
-        borderWidth: 1,
-        pointRadius: 0
-      }
-    ]
+      label: "dataB12Chart",
+      data: dataB12,
+      backgroundColor: [
+        'orange',
+      ],
+      pointRadius: 5
+    }, {
+      label: "dataB34Chart",
+      data: dataB34,
+      backgroundColor: [
+        'orange',
+      ],
+      pointRadius: 5
+    }].concat(auxilliary_datasets('orange'))
   },
   options: {
     plugins: {
@@ -386,12 +302,12 @@ var secondChart = new Chart(myChart2, {
     responsive: true,
     scales: {
       y: {
-        min: -5,
-        max: 5
+        min: 0,
+        max: 5.5
       },
       x: {
-        min: -5,
-        max: 5
+        min: 0,
+        max: 5.5
       }
     }
   }
@@ -415,88 +331,8 @@ var thirdChart = new Chart(myChart4, {
           'rgba(220, 20, 60, 0.6)',
         ],
         pointRadius: 5
-      },
-      {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 5
-        }, {
-          x: 0,
-          y: -5
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      },
-      {
-        type: 'line',
-        data: [{
-          x: -5,
-          y: 0
-        }, {
-          x: 5,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'black',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'red',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'red',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'red',
-        borderWidth: 1,
-        pointRadius: 0
-      }, {
-        type: 'line',
-        data: [{
-          x: 0,
-          y: 0
-        }, {
-          x: 0,
-          y: 0
-        }],
-        fill: false,
-        borderColor: 'red',
-        borderWidth: 1,
-        pointRadius: 0
       }
-    ]
+    ].concat(auxilliary_datasets('red'))
   },
   options: {
     plugins: {
@@ -507,11 +343,11 @@ var thirdChart = new Chart(myChart4, {
     responsive: true,
     scales: {
       y: {
-        min: -5,
+        min: 0,
         max: 5
       },
       x: {
-        min: -5,
+        min: 0,
         max: 5
       }
     }
@@ -612,6 +448,12 @@ function changefunctionC() {
   thirdChart.update();
 
 }
+
+$(() => {
+  changefunctionA();
+  changefunctionB();
+  changefunctionC();
+})
 
 // ************** THE DATABASE CONNECTION STARTS HERE ***************
 

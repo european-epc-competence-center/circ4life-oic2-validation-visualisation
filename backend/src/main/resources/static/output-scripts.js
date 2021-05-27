@@ -228,7 +228,7 @@ var radarChart = new Chart(ctx, {
       pointBorderColor: "#fff",
       pointHoverBackgroundColor: "#fff",
       pointHoverBorderColor: "blue",
-      data: [-5, -5, -5, -5]
+      data: [0, 0, 0, 0]
     }, {
       label: "CEBM B",
       backgroundColor: "rgb(255,165,0,0.2)",
@@ -237,7 +237,7 @@ var radarChart = new Chart(ctx, {
       pointBorderColor: "#fff",
       pointHoverBackgroundColor: "#fff",
       pointHoverBorderColor: "orange",
-      data: [-5, -5, -5, -5]
+      data: [0, 0, 0, 0]
     }, {
       label: "CEBM C",
       backgroundColor: "rgb(255,0,0,0.2)",
@@ -246,7 +246,7 @@ var radarChart = new Chart(ctx, {
       pointBorderColor: "#fff",
       pointHoverBackgroundColor: "#fff",
       pointHoverBorderColor: "red",
-      data: [-5, -5, -5, -5]
+      data: [0, 0, 0, 0]
     }]
   },
   options: {
@@ -254,7 +254,7 @@ var radarChart = new Chart(ctx, {
       mode: 'label'
     },
     scale: {
-      min: -5,
+      min: 0,
       max: 5,
       stepsize: 0.01
     }
@@ -269,8 +269,13 @@ function updateCharts() {
   getAllAverageModels(givenTypeModel + 'A', givenTypeModel + 'B', givenTypeModel + 'C').then(averageData => setCharts(averageData));
 }
 
+// rescale from [0;5] to [-5;5]
+function rescale(data_point) {
+  return 2 * data_point - 5;
+}
+
 function setCharts(averageData) {
-//  console.log(averageData);
+    console.log(averageData);
 
   for (let i = 0; i < 3; i++) {
     radarChart.data.datasets[i].data[0] = averageData[i].linearToCircular;
@@ -279,10 +284,10 @@ function setCharts(averageData) {
     radarChart.data.datasets[i].data[3] = averageData[i].industryApplicability;
 
 
-    charts[i].options.plugins.quadrantsFirstChart.v1 = charts[i].data.datasets[0].data[0].x = averageData[i].linearToCircular;
-    charts[i].options.plugins.quadrantsFirstChart.v2 = charts[i].data.datasets[0].data[0].y = averageData[i].innovativeness;
-    charts[i].options.plugins.quadrantsSecondChart.v1 = charts[i].data.datasets[1].data[0].x = averageData[i].businessPotential;
-    charts[i].options.plugins.quadrantsSecondChart.v2 = charts[i].data.datasets[1].data[0].y = averageData[i].industryApplicability;
+    charts[i].options.plugins.quadrantsFirstChart.v1 = charts[i].data.datasets[0].data[0].x = rescale(averageData[i].linearToCircular);
+    charts[i].options.plugins.quadrantsFirstChart.v2 = charts[i].data.datasets[0].data[0].y = rescale(averageData[i].innovativeness);
+    charts[i].options.plugins.quadrantsSecondChart.v1 = charts[i].data.datasets[1].data[0].x = rescale(averageData[i].businessPotential);
+    charts[i].options.plugins.quadrantsSecondChart.v2 = charts[i].data.datasets[1].data[0].y = rescale(averageData[i].industryApplicability);
     charts[i].update();
   }
   radarChart.update();
