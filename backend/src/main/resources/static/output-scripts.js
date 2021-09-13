@@ -256,7 +256,9 @@ var radarChart = new Chart(ctx, {
     scale: {
       min: 0,
       max: 5,
-      stepsize: 0.01
+      ticks: {
+                stepSize: 1
+            }
     }
   }
 });

@@ -303,11 +303,11 @@ var secondChart = new Chart(myChart2, {
     scales: {
       y: {
         min: 0,
-        max: 5.5
+        max: 5
       },
       x: {
         min: 0,
-        max: 5.5
+        max: 5
       }
     }
   }
