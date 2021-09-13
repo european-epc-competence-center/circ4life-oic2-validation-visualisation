@@ -12,16 +12,13 @@ sketch by [Laurea](https://www.laurea.fi/en/).
 ![concept picture](concept/laureas-example.png)
 
 
-
-
-
-
 ## CIRC4Life
 
 <img src="eu_flag.jpg" style="height:100px;float:left;margin:5px;">
+<img src="c4l.png" style="height:100px;float:left;margin:5px;">
 
 This work is part of the CIRC4Life ( https://www.circ4life.eu/ ) project
-which received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement No 776503.
+which received funding from the European Union’s Horizon 2020 research and innovation program under grant agreement No 776503.
 
 
 
